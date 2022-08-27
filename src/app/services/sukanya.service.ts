@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'; 
-import { SukanyaRegister } from '../sukanya/models/sukanya-register'; 
+import { SukanyaRegister } from '../step/sukanya/models/sukanya-register'; 
 
 
 @Injectable({

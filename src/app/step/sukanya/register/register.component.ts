@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';  
 import { SukanyaRegister } from '../models/sukanya-register'; 
-import { SukanyaService } from '../../services/sukanya.service';
+import { SukanyaService } from 'src/app/services/sukanya.service';
 
 
 @Component({
