@@ -1,1 +1,29 @@
-<p>step-courses works!</p>
+<app-step-navbar [currentTab]="'step-courses'"></app-step-navbar>
+
+<div class="container-fluid mx-4 py-5">
+    <h2>Steps Courses</h2>
+  
+    <div class="courses-container col-md-12 row " >
+        <div class="col-md-4 my-3" *ngFor="let course of courses">
+            <div class="card h-100 p-4">
+            <div class="card-details">
+                <h4><b>{{course.courseTitle}}</b></h4>
+                <p>
+                  Description : {{course.description}}<br>
+                  start Date : {{course.startDate}}<br>
+                  Mode of Course : {{course.courseMode}}<br>
+                  Duration : {{course.durationMonth +" Months"}}<br>
+                  Vacancies : {{course.vacancy}}<br>
+                  Location :{{course.location}}<br>
+                </p>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary creg" id="creg">Register</button>
+                    <!-- <button class="btn btn-danger" >Cancel</button> -->
+                </div>
+            </div>
+            </div>
+        </div>
+      
+  
+    </div>
+</div>

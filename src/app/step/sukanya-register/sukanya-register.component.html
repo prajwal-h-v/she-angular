@@ -1,0 +1,57 @@
+<app-step-navbar [currentTab]="'step-sukanya'"></app-step-navbar>
+
+
+<div class="container">
+    <div class="div" *ngIf="errorMessage!==''|| errorMessage!==null || errorMessage!==undefined " style="color: red;">
+            {{errorMessage}}
+    </div>
+        <form class="row g-3 needs-validation" method="POST" (ngSubmit)="register()">
+            <h2 class="text-center">Registration Form</h2>
+
+            <!-- First Name -->
+            <div class="col-md-4">
+                <label for="firstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" [(ngModel)]="sukanyaReg.firstName" id="firstname" name="firstname" placeholder="First Name">
+            </div>
+            
+
+            <!-- Last Name-->
+            <div class="col-md-4">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" [(ngModel)]="sukanyaReg.lastName" id="lastname" name="lastname" placeholder="Last Name">
+            </div>
+            
+            <!-- Date Of Birth -->
+            <div class="col-md-4">
+                <label for="dob" class="form-label">Date Of Birth</label><br>
+                <input type="date" class="form-control" [min]="minDate" [max]="maxDate" [(ngModel)]="sukanyaReg.dateOfBirth" id="dob" name="dob">
+            </div> 
+
+            <!-- Aadhar Number -->
+            <div class="col-md-4">
+                <label for="aadhar" class="form-label">Aadhar Number</label>
+                <input type="number" class="form-control" maxlength="12" [(ngModel)]="sukanyaReg.aadharNumber" id="aadhar" name="aadhar" pattern="[0-9]{12}" placeholder="Aadhar Number">
+            </div>
+            
+            <!-- Aadhar Upload -->
+            <div class="col-md-4">
+                <label for="formFile" class="form-label" (change)="fileUplaod($event)" >Upload Aadhar</label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+
+            <!-- Register Button -->
+            <div class="text-center">
+                <button class="btn btn-primary" style="align-items: center;" type="submit" value="Submit">Register</button>
+            </div>
+
+            <div class="row" *ngIf="showMsg">
+                <div class="col-xs-12">
+                    <p class="alert alert-success" style="margin-top: 10px;">
+                        <strong>Registration Success!</strong>
+                    </p>
+                </div>
+            </div>
+
+        </form>
+</div>
+<router-outlet></router-outlet>

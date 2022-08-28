@@ -1,0 +1,45 @@
+<app-step-navbar [currentTab]="'home'"></app-step-navbar>
+
+<div class="container-fluid mx-4 py-5">
+    
+    <h1 class="mb-5 mt-3">Welcome <span class="font-weight-bold">Prats</span></h1>
+
+    <div class="course-div container-fluid mb-5">
+        <h3>Your Courses</h3>
+        <div class="col-md-12 row w-100">
+            <!-- fetch courses and accomodations for this user using user id on login and use array in ngfor -->
+            <div class="col-md-3 my-3" *ngFor="let c of courses">
+                <div class="card h-100">
+                    <div class="card-body p-3">
+                        <h6 class="card-title">{{c.title}}</h6>
+                        <p class="mb-0">Mode : {{c.mode}}</p>
+                        <p class="mb-0">Description : {{c.description}}</p>
+                        <p class="mb-0">Duration : {{c.duration}}</p>
+                        <p class="mb-0">Location : {{c.location}}</p>
+                        <p class="mb-0">Start Date : {{c.start_date}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accom-div container-fluid mb-4">
+        <h3>Your Accomodation</h3>
+        <div class="col-md-12 row w-100">
+            <div class="col-md-3 my-3" *ngFor="let c of courses">
+                <div class="card h-100">
+                    <div class="card-body p-3">
+                        <h6 class="card-title">{{c.title}}</h6>
+                        <p class="mb-0">Mode : {{c.mode}}</p>
+                        <p class="mb-0">Address : {{c.location + " "+c.description}}</p>
+                        <p class="mb-0">City : {{c.start_date}}</p>
+                        <p class="mb-0">State : {{c.start_date}}</p>
+                        <p class="mb-0">Day Care centre : Yes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
