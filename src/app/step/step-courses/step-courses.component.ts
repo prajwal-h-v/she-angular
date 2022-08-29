@@ -40,7 +40,7 @@ export class StepCoursesComponent implements OnInit {
   constructor(private courseService:CourseServiceService, private router:Router) {
     this.courseService.getCourses().subscribe(courses=>{
       this.courses=courses;
-      // console.log(this.courses);
+      console.log(this.courses);
      });
    }
 

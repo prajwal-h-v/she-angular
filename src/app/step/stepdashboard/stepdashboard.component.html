@@ -10,13 +10,15 @@
             <!-- fetch courses and accomodations for this user using user id on login and use array in ngfor -->
             <div class="col-md-3 my-3" *ngFor="let c of courses">
                 <div class="card h-100">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">{{c.title}}</h4>
+                    </div>
                     <div class="card-body p-3">
-                        <h6 class="card-title">{{c.title}}</h6>
-                        <p class="mb-0">Mode : {{c.mode}}</p>
-                        <p class="mb-0">Description : {{c.description}}</p>
-                        <p class="mb-0">Duration : {{c.duration}}</p>
-                        <p class="mb-0">Location : {{c.location}}</p>
-                        <p class="mb-0">Start Date : {{c.start_date}}</p>
+                        <!-- <p class="mb-0"><b>Mode :</b> {{c.mode}}</p> -->
+                        <p class="mb-0"><b>Description :</b> {{c.description}}</p>
+                        <p class="mb-0"><b>Duration :</b> {{c.duration}}</p>
+                        <p class="mb-0"><b>Location :</b> {{c.location}}</p>
+                        <p class="mb-0"><b>Start Date :</b> {{c.start_date}}</p>
                     </div>
                 </div>
             </div>
@@ -26,15 +28,16 @@
     <div class="accom-div container-fluid mb-4">
         <h3>Your Accomodation</h3>
         <div class="col-md-12 row w-100">
-            <div class="col-md-3 my-3" *ngFor="let c of courses">
+            <div class="col-md-3 my-3" *ngFor="let a of accomodations">
                 <div class="card h-100">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">{{a.name}}</h4>
+                    </div>
                     <div class="card-body p-3">
-                        <h6 class="card-title">{{c.title}}</h6>
-                        <p class="mb-0">Mode : {{c.mode}}</p>
-                        <p class="mb-0">Address : {{c.location + " "+c.description}}</p>
-                        <p class="mb-0">City : {{c.start_date}}</p>
-                        <p class="mb-0">State : {{c.start_date}}</p>
-                        <p class="mb-0">Day Care centre : Yes</p>
+                        <p class="mb-0"><b>Location :</b> {{a.addressLine1 +" "+a.addressLine2}}</p>
+                        <p class="mb-0"><b>City :</b> {{a.city}}</p>
+                        <p class="mb-0"><b>State :</b> {{a.state}}</p>
+                        <p class="mb-0"><b>Day Care centre :</b> Yes</p>
                     </div>
                 </div>
             </div>

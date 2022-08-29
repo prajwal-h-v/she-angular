@@ -16,13 +16,29 @@ import { StepNavbarComponent } from './step/step-navbar/step-navbar.component';
 import { StepProfileComponent } from './step/step-profile/step-profile.component';
 import { StepSukanyaComponent } from './step/step-sukanya/step-sukanya.component';
 import { SukanyaRegisterComponent } from './step/sukanya-register/sukanya-register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UpdateUserDetailsComponent } from './step/step-profile/update-user-details/update-user-details.component';
 import { UpdateUserPasswordComponent } from './step/step-profile/update-user-password/update-user-password.component';
 import { AddFamilyDetailsComponent } from './step/step-profile/add-family-details/add-family-details.component';
 
-
+// material imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+// import { MatErrorModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatDatepickerInput } from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';  
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -45,8 +61,35 @@ import { AddFamilyDetailsComponent } from './step/step-profile/add-family-detail
     UpdateUserPasswordComponent, 
     AddFamilyDetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
-  providers: [HttpClient,HttpClientModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule, 
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
+    // MatErrorModule,
+    MatInputModule,
+    MatRadioModule,
+    // MatDatepickerContent,
+    MatSnackBarModule,
+    // MatDatepickerInput,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatNativeDateModule,
+    MatDividerModule
+    
+  ],
+  providers: [
+    HttpClient,
+    HttpClientModule,
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

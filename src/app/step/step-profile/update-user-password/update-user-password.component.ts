@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UpdatePasswordDetails } from '../../../models/update-password-details';
+import { UserServiceService } from '../../../services/user-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-update-user-password',
@@ -7,9 +12,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateUserPasswordComponent implements OnInit {
 
-  constructor() { }
+  showRegisterPassword: boolean = false;
+  showRegisterConfirmPassword: boolean = false;
+  showOldPassword: boolean = false;
+  updatePasswordDetails: UpdatePasswordDetails = new UpdatePasswordDetails();
+  userEmail: string;
+  newPassword: string;
+  confirmNewPassword: string;
+  constructor(
+    private userService: UserServiceService,
+    private route: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  toggleRegisterPasswordVisibility(): void {
+    this.showRegisterPassword = !this.showRegisterPassword;
+  }
+
+  toggleRegisterConfirmPasswordVisibility(): void {
+    this.showRegisterConfirmPassword = !this.showRegisterConfirmPassword;
+  }
+
+  toggleOldPasswordVisibility(): void {
+    this.showOldPassword = !this.showOldPassword;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
+  changePassword(): void {
+    if (
+      this.newPassword == this.confirmNewPassword &&
+      this.userEmail == JSON.parse(sessionStorage.getItem('userDetails')).email
+    ) {
+      this.updatePasswordDetails.newPassword = this.newPassword;
+      this.updatePasswordDetails.userId = JSON.parse(
+        sessionStorage.getItem('userDetails')
+      ).userId;
+      this.userService
+        .updateUserPassword(this.updatePasswordDetails)
+        .subscribe((response) => {
+          if (response) {
+            this.openSnackBar('Password Reset Successfull', 'DISMISS');
+            this.route.navigate(['userLoginAndRegister']);
+            sessionStorage.removeItem('userDetails');
+          }
+        });
+    } else {
+      this.openSnackBar('Credentials Mismatch', 'Try Again');
+    }
   }
 
 }

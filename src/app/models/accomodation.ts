@@ -12,4 +12,7 @@ export class Accommodation {
     public roomAvailable: number;
     public capacity: number;
     public dayCareCentre: boolean;
+
 }
+
+

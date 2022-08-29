@@ -1,0 +1,45 @@
+.body-container {
+    padding: 1rem;
+    background-color: #eeeeee;
+  }
+  
+  .dashboard-default {
+    height: 100%;
+    display: grid;
+    grid-template: 10% 1fr / repeat(4, 1fr);
+    gap: 1rem;
+  }
+  
+  .profile-container {
+    height: 100%;
+    display: grid;
+    grid-template: auto 1fr /1fr;
+    gap: 1rem;
+  }
+  
+  .profile-navigation {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .profile-body {
+    height: 100%;
+    /* overflow: scroll; */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 1rem 6rem;
+  }
+  
+  .profile-body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .span-entire {
+    grid-column: 1/5;
+  }
+  
+  .form-style {
+    display: flex;
+    flex-direction: column;
+  }
+  
