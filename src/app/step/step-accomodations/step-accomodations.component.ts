@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Accomodation_status } from '../../models/accomodation-status';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Accommodation } from '../../models/accomodation';
-// import { UserProfileDetails } from 'src/app/user-profile-details';
+import { UserProfileDetails } from '../../models/user-profile-details';
 import { AccomodationService } from '../../services/accomodation-service.service';
 
 
@@ -14,43 +14,13 @@ import { AccomodationService } from '../../services/accomodation-service.service
 })
 export class StepAccomodationsComponent implements OnInit {
 
-//   accomodations =[
-//     {
-//      name:"Sakhi",
-//      address1:"lokamanya apartment",
-//      address2:"wakil society",
-//      landmark:"JJ hospital",
-//      city:"Pune",
-//      state:"Maharashtra",
-//      pincode:411057,
-//      rooms:20,
-//      daycare:"Available"   
-
-//    },
-//    {
-//     name:"Sakhieee",
-//     address1:"lokamanya apartment",
-//     address2:"wakil society",
-//     landmark:"JJ hospital",
-//     city:"Punewwww",
-//     state:"Maharashtra",
-//     pincode:411057,
-//     rooms:10,
-//     daycare:"Available"   
-
-//   }
-//  ];  
 
 
   // accomodation:Array<any>=[]
 
 
-  reg=true;
-
-  register(){
-    this.reg=false;
-  }
-  // user: UserProfileDetails;
+  
+  user: UserProfileDetails;
   accomodations:Accommodation[];
   constructor(private accomodationservice:AccomodationService,private router:Router) { 
      this.accomodationservice.getaccomodation().subscribe(accomodations=>{
@@ -61,7 +31,24 @@ export class StepAccomodationsComponent implements OnInit {
   
   }
 
+  
+  
+  
+
   ngOnInit(): void {
+  
+    this.user = JSON.parse(sessionStorage.getItem('userDetails'));
+
+    if(sessionStorage.getItem('userDetails')===null || sessionStorage.getItem('userDetails')===undefined){
+
+      this.router.navigateByUrl('../../she/StepLogin');
+    }
+  }
+  reg=true;
+  register(accomodationId:number){
+    console.log(accomodationId);
+    
+    this.accomodationservice.register(accomodationId,this.user.userId).subscribe(a=>{});  
   }
 
 }

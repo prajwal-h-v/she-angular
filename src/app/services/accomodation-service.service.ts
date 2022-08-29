@@ -2,17 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Accommodation } from '../models/accomodation';
-// import { Accomodation_status } from '../models/accomodation-status';
+import { Accomodation_status } from '../models/accomodation-status';
 @Injectable({
     providedIn: 'root'
   })
   export class AccomodationService {
-//   register(accomodationId: number,userId:number) : Observable<Accomodation_status> 
-//   {
+  register(accomodationId: number,userId:number) : Observable<Accomodation_status> 
+  {
+    console.log(accomodationId, userId);
+    return this.httpClient.get<Accomodation_status>(`http://localhost:9090/accomodation/${accomodationId}/register/${userId}`);
 
-//     return this.httpClient.get<Accomodation_status>(`http://localhost:9090/accomodation/${accomodationId}/register/${userId}`);
-
-//   }
+  }
 
    
   getaccomodation():Observable< Accommodation[]> {

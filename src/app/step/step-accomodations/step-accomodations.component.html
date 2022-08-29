@@ -9,21 +9,21 @@
                 <div class="card-header">
                     <h4 class="card-title mb-0">{{accomodation.name}}</h4>
                 </div>
-            <div class="card-details card-body h-100 d-flex flex-column justify-content-between">
-                <div>
-                    <p class="card-text"><strong>Location :</strong> {{accomodation.addressLine1 +" "+accomodation.addressLine2 +" "+accomodation.landmark}}</p>
-                    <p class="card-text"><strong>City : </strong>{{accomodation.city}}</p>
-                    <p class="card-text"><strong>State : </strong>{{accomodation.state}}</p>
-                    <p class="card-text"><strong>Pin Code :</strong> {{accomodation.pincode}}</p>
-                    <p class="card-text"><strong>Day Care Center :</strong> {{accomodation.dayCareCentre?"Available":"Not Available"}}</p>
-                    <p class="card-text"><strong>Available Rooms :</strong> {{accomodation.roomAvailable}}</p>
+                <div class="card-details card-body h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <p class="card-text"><strong>Location :</strong> {{accomodation.addressLine1 +" "+accomodation.addressLine2 +" "+accomodation.landmark}}</p>
+                        <p class="card-text"><strong>City : </strong>{{accomodation.city}}</p>
+                        <p class="card-text"><strong>State : </strong>{{accomodation.state}}</p>
+                        <p class="card-text"><strong>Pin Code :</strong> {{accomodation.pincode}}</p>
+                        <p class="card-text"><strong>Day Care Center :</strong> {{accomodation.dayCareCentre?"Available":"Not Available"}}</p>
+                        <p class="card-text"><strong>Available Rooms :</strong> {{accomodation.roomAvailable}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-primary creg" id="creg" *ngIf="reg!==false" (click)="register(accomodation.accomodationId)">Register</button>
+                        <button class="btn disabled btn-secondary" *ngIf="reg===false">{{accomodation.city}}Registered</button>
+                        <button class="btn btn-danger" *ngIf="!reg===true">Cancel</button>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between mt-3">
-                    <button class="btn btn-primary creg" id="creg" *ngIf="!reg===false" (click)="register()">Register</button>
-                    <button class="btn disabled btn-secondary" *ngIf="!reg===true">Registered</button>
-                    <button class="btn btn-danger" *ngIf="!reg===true">Cancel</button>
-                </div>
-            </div>
             </div>
         </div>
       

@@ -8,42 +8,42 @@ import { Component, OnInit } from '@angular/core';
 export class StepdashboardComponent implements OnInit {
 
   // name: string = '';
-  courses=[
-    {
-      title:"Java",
-      mode:"offline",
-      description:"dsdasdsaddsfsdfdfsd", 
-      duration:3,
-      location:"Pune",
-      start_date:23052012
-    },
-    {
-      title:"Python",
-      mode:"offline",
-      description:"dsdasdsaddsfsdfdfsd", 
-      duration:3,
-      location:"Pune",
-      start_date:23052012
-    }
-  ]
+  // courses=[
+  //   {
+  //     title:"Java",
+  //     mode:"offline",
+  //     description:"dsdasdsaddsfsdfdfsd", 
+  //     duration:3,
+  //     location:"Pune",
+  //     start_date:23052012
+  //   },
+  //   {
+  //     title:"Python",
+  //     mode:"offline",
+  //     description:"dsdasdsaddsfsdfdfsd", 
+  //     duration:3,
+  //     location:"Pune",
+  //     start_date:23052012
+  //   }
+  // ]
 
-  accomodations =[
-    {
-     name:"Sakhi",
-     addressLine1:"online",
-     addressLine2:"dsdasdsad",
-     city:5,
-     state:"Pune"
-   },
-   {
-    name:"Sakhi2",
-    addressLine1:"online",
-    addressLine2:"dsdasdsad",
-    city:5,
-    state:"Pune"
-  }
+//   accomodations =[
+//     {
+//      name:"Sakhi",
+//      addressLine1:"online",
+//      addressLine2:"dsdasdsad",
+//      city:5,
+//      state:"Pune"
+//    },
+//    {
+//     name:"Sakhi2",
+//     addressLine1:"online",
+//     addressLine2:"dsdasdsad",
+//     city:5,
+//     state:"Pune"
+//   }
    
- ];  
+//  ];  
   
   constructor() { }
 

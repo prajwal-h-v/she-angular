@@ -13,11 +13,12 @@
         <input
           matInput
           name="firstname"
-         
+          [(ngModel)]="userDetails.firstName"
+          #fname="ngModel"
           required
           minlength="2"
         />
-        <!-- <mat-error *ngIf="fname.invalid">At least 2 charactes</mat-error> -->
+        <mat-error *ngIf="fname.invalid">At least 2 charactes</mat-error>
       </mat-form-field>
 
       <span class="form-field-space"></span>
@@ -28,7 +29,8 @@
         <input
           matInput
           name="middleName"
-          
+          name="middleName"
+          [(ngModel)]="userDetails.middleName"
         />
       </mat-form-field>
       
@@ -40,11 +42,12 @@
         <input
           matInput
           name="lastName"
-      
+          [(ngModel)]="userDetails.lastName"
+          #lname="ngModel"
           required
           minlength="2"
         />
-        <!-- <mat-error *ngIf="lname.invalid">At least 2 charactes</mat-error> -->
+        <mat-error *ngIf="lname.invalid">At least 2 charactes</mat-error>
       </mat-form-field>
 
     </span>
@@ -58,13 +61,14 @@
           aria-labelledby="example-radio-group-label"
           class="radio-btn-group"
           name="gender"
-          
+          [(ngModel)]="userDetails.gender"
+          #gender="ngModel"
           required
         >
           <mat-radio-button [value]="'MALE'"> Male </mat-radio-button>
           <mat-radio-button [value]="'FEMALE'"> Female </mat-radio-button>
         </mat-radio-group>
-        <!-- <mat-error *ngIf="gender.invalid">Required</mat-error> -->
+        <mat-error *ngIf="gender.invalid">Required</mat-error>
       </span>
 
       <span class="form-field-space"></span>
@@ -74,13 +78,14 @@
           aria-labelledby="example-radio-group-label"
           class="radio-btn-group"
           name="disabled"
-         
+          [(ngModel)]="userDetails.disabled"
+          #disability="ngModel"
           required
         >
           <mat-radio-button [value]="'YES'"> Yes </mat-radio-button>
           <mat-radio-button [value]="'NO'"> No </mat-radio-button>
         </mat-radio-group>
-        <!-- <mat-error *ngIf="disability.invalid">Required</mat-error> -->
+        <mat-error *ngIf="disability.invalid">Required</mat-error>
       </span>
 
 
@@ -91,11 +96,12 @@
         <input
           matInput
           [matDatepicker]="picker"
-          
-
+          name="dob"
+          [(ngModel)]="userDetails.dob"
+          #dob="ngModel"
           required
         />
-        <!-- <mat-error *ngIf="dob.invalid">Required</mat-error> -->
+        <mat-error *ngIf="dob.invalid">Required</mat-error>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -112,26 +118,27 @@
           matInput
           type="number"
           name="contactNo"
-         
+          [(ngModel)]="userDetails.contactNo"
+          #contactNo="ngModel"
           minlength="10"
           maxlength="10"
           required
         />
-        <!-- <mat-error *ngIf="contactNo.invalid">At least 10 digits</mat-error> -->
+        <mat-error *ngIf="contactNo.invalid">At least 10 digits</mat-error>
       </mat-form-field>
       <span class="form-field-space"></span>
       <mat-form-field appearance="standard">
         <mat-label>AADHAAR Number</mat-label>
         <input
           matInput
-          type="number"
           name="aadhaarNo"
-        
+          [(ngModel)]="userDetails.aadhaarNo"
+          #aadhaarNo="ngModel"
           minlength="12"
           maxlength="12"
           required
         />
-        <!-- <mat-error *ngIf="aadhaarNo.invalid">12 Digits. Required</mat-error> -->
+        <mat-error *ngIf="aadhaarNo.invalid">12 Digits. Required</mat-error>
       </mat-form-field>
       <span class="form-field-space"></span>
       <mat-form-field appearance="standard">
@@ -139,12 +146,13 @@
         <input
           matInput
           name="panNo"
-         
+          [(ngModel)]="userDetails.panNo"
+          #panNo="ngModel"
           minlength="10"
           maxlength="10"
           required
         />
-        <!-- <mat-error *ngIf="panNo.invalid">11 Characters. Required</mat-error> -->
+        <mat-error *ngIf="panNo.invalid">11 Characters. Required</mat-error>
       </mat-form-field>
     </span>
 
@@ -157,10 +165,11 @@
           matInput
           type="email"
           name="email"
-         
+          [(ngModel)]="userDetails.email"
+          #email="ngModel"
           required
         />
-        <!-- <mat-error *ngIf="email.invalid">Required. Valid Email</mat-error> -->
+        <mat-error *ngIf="email.invalid">Required. Valid Email</mat-error>
       </mat-form-field>
       <span class="form-field-space"></span>
       <mat-form-field appearance="standard">
@@ -169,11 +178,12 @@
           matInput
           [type]="showRegisterPassword ? 'text' : 'password'"
           name="password"
-          
+          [(ngModel)]="userLoginDetails.password"
+          #password="ngModel"
           minlength="8"
           required
         />
-        <!-- <mat-error *ngIf="password.invalid">At least 8 charactes</mat-error> -->
+        <mat-error *ngIf="password.invalid">At least 8 charactes</mat-error>
         <mat-icon matSuffix (click)="toggleRegisterPasswordVisibility()">
           {{ showRegisterPassword ? "Not visible" : "visibility" }}
         </mat-icon>
@@ -189,7 +199,8 @@
           aria-labelledby="example-radio-group-label"
           class="radio-btn-group"
           name="jobStatus"
-        
+          [(ngModel)]="userDetails.jobStatus"
+          #jobStatus="ngModel"
           required
         >
           <mat-radio-button [value]="'EMPLOYED'"> Employed </mat-radio-button>
@@ -197,7 +208,7 @@
             Unemployed
           </mat-radio-button>
         </mat-radio-group>
-        <!-- <mat-error *ngIf="jobStatus.invalid">Required</mat-error> -->
+        <mat-error *ngIf="jobStatus.invalid">Required</mat-error>
       </span>
       <span class="form-field-space"></span>
       <mat-form-field appearance="standard">
@@ -205,10 +216,11 @@
         <input
           matInput
           name="jobTitle"
-         
+          [(ngModel)]="userDetails.jobTitle"
+          #jobTitle="ngModel"
           required
         />
-        <!-- <mat-error *ngIf="jobTitle.invalid">Required</mat-error> -->
+        <mat-error *ngIf="jobTitle.invalid">Required</mat-error>
       </mat-form-field>
       <span class="form-field-space"></span>
       <mat-form-field appearance="standard">
@@ -217,10 +229,11 @@
           matInput
           type="number"
           name="salary"
-          
+          [(ngModel)]="userDetails.salary"
+          #salary="ngModel"
           required
         />
-        <!-- <mat-error *ngIf="salary.invalid">Required</mat-error> -->
+        <mat-error *ngIf="salary.invalid">Required</mat-error>
         <span matPrefix>₹&nbsp;</span>
       </mat-form-field>
     </span>
@@ -234,13 +247,14 @@
           aria-labelledby="example-radio-group-label"
           class="radio-btn-group"
           name="residenceArea"
-         
+          [(ngModel)]="userDetails.residenceArea"
+          #area="ngModel"
           required
         >
           <mat-radio-button [value]="'URBAN'"> Urban </mat-radio-button>
           <mat-radio-button [value]="'RURAL'"> Rural </mat-radio-button>
         </mat-radio-group>
-        <!-- <mat-error *ngIf="area.invalid">Required</mat-error> -->
+        <mat-error *ngIf="area.invalid">Required</mat-error>
       </span>
       <span class="form-field-space"></span>
 
@@ -250,7 +264,8 @@
           aria-labelledby="example-radio-group-label"
           class="radio-btn-group"
           name="maritalStatus"
-         
+          [(ngModel)]="userDetails.maritalStatus"
+          #maritalStatus="ngModel"
           required
         >
           <mat-radio-button [value]="'MARRIED'"> Married </mat-radio-button>
@@ -258,7 +273,7 @@
           <mat-radio-button [value]="'WIDOWED'"> Widowed </mat-radio-button>
           <mat-radio-button [value]="'SEPARATED'"> Separated </mat-radio-button>
         </mat-radio-group>
-        <!-- <mat-error *ngIf="maritalStatus.invalid">Required</mat-error> -->
+        <mat-error *ngIf="maritalStatus.invalid">Required</mat-error>
       </span>
     </span>
 
@@ -268,6 +283,7 @@
       class="update-detail-button"
       mat-raised-button
       color="primary"
+      [disabled]="updateUserForm.invalid"
     >
       Update
     </button>

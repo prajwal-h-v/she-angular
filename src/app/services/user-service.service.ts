@@ -15,6 +15,7 @@ export class UserServiceService {
   constructor(private httpClient: HttpClient) {}
 
   loginUser(userLoginData: UserLogin): Observable<boolean> {
+    console.log(userLoginData);
     return this.httpClient.post<boolean>(
       'http://localhost:9090/users/userLogin',
       userLoginData
@@ -36,6 +37,7 @@ export class UserServiceService {
   }
 
   updateUserDetails(user: UserProfileDetails): Observable<UserProfileDetails> {
+    console.log(user)
     return this.httpClient.post<UserProfileDetails>(
       'http://localhost:9090/users/updateProfile',
       user

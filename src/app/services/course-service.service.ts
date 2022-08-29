@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course';
-// import { Enrollment } from './models/enrollment';
+import { Enrollment } from '../models/enrollment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,9 @@ getCourses(): Observable<Course[]> {
     
   }); }
 
-//   enrollForCourse(userId:number, courseId: number):Observable<Enrollment>{
-//     return this.httpClient.get<Enrollment>(`http://localhost:9090/course/${courseId}/enroll/${userId}`);
-//   }
+  enrollForCourse(userId:number, courseId: number):Observable<Enrollment>{
+    console.log(courseId, userId);
+    return this.httpClient.get<Enrollment>(`http://localhost:9090/course/${courseId}/enroll/${userId}`);
+  }
   
 }

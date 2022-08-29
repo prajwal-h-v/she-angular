@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="family-member" *ngFor="let member of familyMembers">
-        <button mat-button color="primary" (click)="toUpdateMember(member)">
+        <button mat-raised-button (click)="toUpdateMember(member)">
           {{ member.firstName }}
         </button>
       </div>
@@ -20,8 +20,9 @@
     <div class="member-details" [ngSwitch]="familyState">
       <form
         *ngSwitchCase="'addMember'"
-        #addFamilyMemberForm="ngForm"
         (ngSubmit)="addFamilyMember()"
+        #addFamilyMemberForm="ngForm"
+        
         class="form-style"
       >
         <span class="fields-row three-fields">
@@ -103,12 +104,11 @@
             <input
               matInput
               name="aadhaarNo"
-              type="number"
-              [(ngModel)]="familyMember.aadhaarNo"
-              #aadhaarNo="ngModel"
               minlength="12"
               maxlength="12"
               required
+              [(ngModel)]="familyMember.aadhaarNo"
+              #aadhaarNo="ngModel"              
             />
             <mat-error *ngIf="aadhaarNo.invalid">12 Digits. Required</mat-error>
           </mat-form-field>
@@ -137,11 +137,14 @@
           class="update-detail-button"
           mat-raised-button
           color="primary"
-          [disabled]="addFamilyMemberForm"
+          [disabled]="addFamilyMemberForm.invalid"
         >
           Add
         </button>
       </form>
+
+
+
       <form
         *ngSwitchCase="'updateMember'"
         #addFamilyMemberForm="ngForm"
@@ -260,7 +263,7 @@
           class="update-detail-button"
           mat-raised-button
           color="primary"
-          [disabled]="addFamilyMemberForm"
+          [disabled]="addFamilyMemberForm.invalid"
         >
           Update
         </button>
