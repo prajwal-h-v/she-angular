@@ -1,5 +1,163 @@
 <app-navbar></app-navbar>
 <div class="container content">
-  <p>ngo-login works!</p>
-  <button class="btn btn-primary" routerLink="/ngo/dashboard">Login</button>
+  <div class="row">
+    <div class="col-lg-6" *ngIf="isLogin">
+      <div class="card m-3">
+        <form [formGroup]="ngoLoginForm" (ngSubmit)="requestLogin()">
+          <div class="card-header">
+            <h5>NGO Login</h5>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="ngo-id">NGO ID</label>
+              <input
+                type="number"
+                autocomplete="username"
+                class="form-control"
+                formControlName="ngoID"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ngo-pwd">Password</label>
+              <input
+                type="password"
+                autocomplete="new-password"
+                class="form-control"
+                formControlName="ngoPassword"
+              />
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <button
+              class="btn btn-dark"
+              type="submit"
+              [disabled]="!ngoLoginForm.valid"
+            >
+              Login
+            </button>
+            <hr />
+            <button class="btn btn-outline-primary" (click)="toggle(false)">
+              New here? Chick here to Register
+            </button>
+            <div class="m-3 alert alert-danger" *ngIf="isError">
+              {{ errorMessage }}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-6" *ngIf="!isLogin">
+      <div class="card m-3">
+        <form [formGroup]="ngoRegisterForm" (ngSubmit)="requestRegisterNgo()">
+          <div class="card-header">
+            <h5>NGO Register</h5>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="ngo-name">NGO Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="ngoName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ngo-enail">NGO Email</label>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="ngoEmail"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ngo-pwd1">Password</label>
+              <input
+                type="password"
+                autocomplete="new-password"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ngo-enail">Confirm Password</label>
+              <input
+                type="password"
+                autocomplete="new-password"
+                class="form-control"
+                formControlName="confirmPassword"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ngo-desc">Descrive your NGO in brief</label>
+              <textarea
+                class="form-control"
+                rows="3"
+                formControlName="ngoDescription"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="ngo-enail">Where are you located?</label>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="ngoLocation"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ngo-enail"
+                >Contact <span class="text-warning">(phone)</span></label
+              >
+              <input
+                type="number"
+                class="form-control"
+                formControlName="ngoContact"
+              />
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <button
+              type="submit"
+              class="btn btn-outline-dark"
+              [disabled]="!ngoRegisterForm.valid"
+            >
+              Register
+            </button>
+            <div class="m-3 alert alert-danger" *ngIf="isError">
+              {{ errorMessage }}
+            </div>
+            <hr />
+            <button class="btn btn-outline-primary" (click)="toggle(true)">
+              Login Here
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <h4 class="text-center">Our Associations</h4>
+      <div class="card my-3" *ngFor="let n of ngos">
+        <div class="card-header">
+          {{ n.name }}, <span class="text-muted">{{ n.address }}</span>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ n.description }}</p>
+        </div>
+        <div class="card-footer">
+          <div class="row text-center">
+            <div class="col-lg-6">
+              <p class="card-text">
+                <i class="bi bi-envelope"></i> {{ n.email }}
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <p class="card-text">
+                <i class="bi bi-telephone"></i> {{ n.contact }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

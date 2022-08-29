@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Greeting } from 'src/app/entity/Greeting';
+import { Greeting } from 'src/app/model/Greeting';
 import { GreetingService } from 'src/app/services/greeting.service';
 
 @Component({

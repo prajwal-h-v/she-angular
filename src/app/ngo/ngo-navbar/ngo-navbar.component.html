@@ -1,5 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="nav-brand mx-3">{{ ngo.name }}</div>
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -28,7 +29,7 @@
             class="nav-link"
             routerLink="/ngo/new-course"
             [ngClass]="{ active: currentTab === 'new-course' }"
-            >Add Course</a
+            >Courses</a
           >
         </li>
         <li class="nav-item">
@@ -36,27 +37,12 @@
             class="nav-link"
             routerLink="/ngo/new-accommodation"
             [ngClass]="{ active: currentTab === 'new-accommodation' }"
-            >Add Accommodation</a
+            >Accommodations</a
           >
         </li>
+
         <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/ngo/courses"
-            [ngClass]="{ active: currentTab === 'courses' }"
-            >Course</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/ngo/accommodation"
-            [ngClass]="{ active: currentTab === 'accommodation' }"
-            >Accommodation</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/">Logout</a>
+          <a class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

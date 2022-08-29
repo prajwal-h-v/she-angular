@@ -1,3 +1,6 @@
-.content {
-  height: 50vh;
+label {
+  margin-left: 0.5em;
+}
+.form-group {
+  margin-top: 1em;
 }
