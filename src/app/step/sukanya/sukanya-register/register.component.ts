@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';  
-import { SukanyaRegister } from '../models/sukanya-register'; 
+import { SukanyaRegister } from '../../../models/sukanya-register'; 
 import { SukanyaService } from 'src/app/services/sukanya.service';
 
 
@@ -36,11 +36,11 @@ export class RegisterComponent implements OnInit {
       this.errorMessage="Please Enter Last Name";
       return ;
     }
-    if(this.sukanyaReg.dateOfBirth===undefined){
+    if(this.sukanyaReg.dob===undefined){
       this.errorMessage="Please Date of Birth";
       return ;
     }
-    if(this.sukanyaReg.aadharNumber===undefined || this.sukanyaReg.aadharNumber==="" ||this.sukanyaReg.aadharNumber.length<12){
+    if(this.sukanyaReg.aadharNo===undefined || this.sukanyaReg.aadharNo==="" ||this.sukanyaReg.aadharNo.length<12){
       this.errorMessage="Please Enter Valid Aadhar Number";
       return ;
     } 

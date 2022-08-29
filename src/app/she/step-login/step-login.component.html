@@ -1,0 +1,102 @@
+<app-navbar></app-navbar>
+<div class="container-content">
+    <div class="row">
+        <div class="col-lg-6" *ngIf="isLogin">
+            <div class="card m-3">
+                <form [formGroup]="stepLoginForm" (ngSubmit)="requestLoginStep()">
+                    <div class="card-header">
+                        <h5>STEP Login</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="step-id">STEP ID</label>
+                            <input type="number" class="form-control" formControlName="stepId"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="step-pwd">Password</label>
+                            <input type="password" class="form-control" formControlName="stepPwd"/>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-dark" type="submit" [disabled]="!stepLoginForm.valid">Login</button>
+                    </div>
+                    <hr>
+                    <button class="btn btn-outline-primary" (click)="toggle(false)">
+                        New here? Chick here to Register
+                    </button>
+                    <div class="m-3 alert alert-danger" *ngIf="isError">
+                        {{ errorMessage }}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-6" *ngIf="!isLogin">
+    <div class="card m-3">
+        <form [formGroup]="stepRegForm" (ngSubmit)="requestRegisterStep()">
+            <div class="card-header">
+                <h5>STEP Register</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName">
+                </div>
+                
+                <div class="form-group">
+                    <label for="middle_name">Middle Name</label>
+                    <input type="text" class="form-control" formControlName="middleName">
+                </div>
+                
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName">
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="radio" class="form-control" formControlName="gender">
+                    <label for="male">Male</label>
+                    <input type="radio" class="form-control" formControlName="gender">
+                    <label for="female">Female</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="disabled">Disabled</label>
+                    <input type="radio" class="form-control" formControlName="disabled">
+                    <label for="yes">Yes</label>
+                    <input type="radio" class="form-control" formControlName="disabled">
+                    <label for="no">No</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date Of Birth</label>
+                    <input type="date" class="form-control" formControlName="dob">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="number" class="form-control" formControlName="contact">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Aadhar Number</label>
+                    <input type="number" class="form-control" formControlName="aadharNo">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="number" class="form-control" formControlName="contact">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

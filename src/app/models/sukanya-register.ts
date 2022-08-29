@@ -1,15 +1,15 @@
 export class SukanyaRegister{
     lastName: String;
     firstName: String;
-    aadharNumber: String;
-    dateOfBirth: any;
+    aadharNo: String;
+    dob: any;
     aadharDoc: any;
 
     constructor(){
         this.lastName='';
         this.firstName='';
-        this.aadharNumber='';
-        this.dateOfBirth='';
+        this.aadharNo='';
+        this.dob='';
         this.aadharDoc='';
     }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'; 
-import { SukanyaRegister } from '../step/sukanya/models/sukanya-register'; 
+import { SukanyaRegister } from '../models/sukanya-register'; 
 
 
 @Injectable({
@@ -14,8 +14,8 @@ export class SukanyaService {
   public register(sukanyaReg:SukanyaRegister):Observable<String>{    
     console.log(sukanyaReg.firstName);
     console.log(sukanyaReg.lastName);
-    console.log(sukanyaReg.aadharNumber);
-    console.log(sukanyaReg.dateOfBirth);
+    console.log(sukanyaReg.aadharNo);
+    console.log(sukanyaReg.dob);
     console.log(sukanyaReg.aadharDoc);
     console.log(JSON.stringify(sukanyaReg));
     
