@@ -7,6 +7,8 @@ import { UserId } from '../models/user-id';
 import { UserLogin } from '../models/user-login';
 import { UserProfileDetails } from '../models/user-profile-details';
 import { UserRegisterDetails } from '../models/user-register-details';
+import {Course} from '../models/course';
+
 
 @Injectable({
   providedIn: 'root',
@@ -73,4 +75,13 @@ export class UserServiceService {
       userId
     );
   }
+
+
+
+  getCourseDetails(userId:number): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(
+      'http:///localhost:9090/users/list-course-by-user/'+ userId
+    );
+  }
+
 }

@@ -10,13 +10,13 @@ import { Accomodation_status } from '../models/accomodation-status';
   register(accomodationId: number,userId:number) : Observable<Accomodation_status> 
   {
     console.log(accomodationId, userId);
-    return this.httpClient.get<Accomodation_status>(`http://localhost:9090/accomodation/${accomodationId}/register/${userId}`);
+    return this.httpClient.get<Accomodation_status>(`http://localhost:9090/accommodation/${accomodationId}/register/${userId}`);
 
   }
 
    
   getaccomodation():Observable< Accommodation[]> {
-      return this.httpClient.get<Accommodation[]>("http://localhost:9090/accomodation/list-accomodation");
+      return this.httpClient.get<Accommodation[]>("http://localhost:9090/accommodation/list-accomodation");
  
      }
     

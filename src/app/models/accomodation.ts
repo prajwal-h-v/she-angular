@@ -1,5 +1,5 @@
 export class Accommodation {
-    public accomodationId: number;
+    public accommodationId: number;
     public name: string;
     public ngo_id: number;
     public state: string;
