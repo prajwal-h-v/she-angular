@@ -1,11 +1,11 @@
-<app-navbar></app-navbar>
+<app-navbar [currentTab]="'ngo'"></app-navbar>
 <div class="container content">
-  <div class="row">
+  <div class="row my-5">
     <div class="col-lg-6" *ngIf="isLogin">
       <div class="card m-3">
         <form [formGroup]="ngoLoginForm" (ngSubmit)="requestLogin()">
-          <div class="card-header">
-            <h5>NGO Login</h5>
+          <div class="card-header bg-success bg-gradient text-light">
+            <h4 class="my-1">NGO Login</h4>
           </div>
           <div class="card-body">
             <div class="form-group">
@@ -27,19 +27,20 @@
               />
             </div>
           </div>
-          <div class="card-footer text-center">
+          <div class="card-footer bg-success bg-gradient text-center">
             <button
-              class="btn btn-dark"
+              class="btn btn-outline-light"
               type="submit"
               [disabled]="!ngoLoginForm.valid"
             >
               Login
             </button>
             <hr />
-            <button class="btn btn-outline-primary" (click)="toggle(false)">
+            <button class="btn btn-dark" (click)="toggle(false)">
               New here? Chick here to Register
             </button>
             <div class="m-3 alert alert-danger" *ngIf="isError">
+              <i class="bi bi-exclamation-triangle-fill text-danger"></i>
               {{ errorMessage }}
             </div>
           </div>
@@ -50,7 +51,7 @@
     <div class="col-lg-6" *ngIf="!isLogin">
       <div class="card m-3">
         <form [formGroup]="ngoRegisterForm" (ngSubmit)="requestRegisterNgo()">
-          <div class="card-header">
+          <div class="card-header bg-dark bg-gradient text-light">
             <h5>NGO Register</h5>
           </div>
           <div class="card-body">
@@ -115,10 +116,10 @@
               />
             </div>
           </div>
-          <div class="card-footer text-center">
+          <div class="card-footer bg-dark bg-gradient text-center">
             <button
               type="submit"
-              class="btn btn-outline-dark"
+              class="btn btn-outline-light"
               [disabled]="!ngoRegisterForm.valid"
             >
               Register
@@ -126,8 +127,11 @@
             <div class="m-3 alert alert-danger" *ngIf="isError">
               {{ errorMessage }}
             </div>
+            <div class="m-3 alert alert-success" *ngIf="isSuccess">
+              {{ successMsg }}
+            </div>
             <hr />
-            <button class="btn btn-outline-primary" (click)="toggle(true)">
+            <button class="btn btn-success" (click)="toggle(true)">
               Login Here
             </button>
           </div>
@@ -135,16 +139,18 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <h4 class="text-center">Our Associations</h4>
+      <div class="alert alert-dark bg-gradient text-center my-3">
+        <h2>Our Associations</h2>
+      </div>
       <div class="card my-3" *ngFor="let n of ngos">
-        <div class="card-header">
-          {{ n.name }}, <span class="text-muted">{{ n.address }}</span>
+        <div class="card-header bg-dark bg-gradient text-light">
+          {{ n.name }}, {{ n.address }}
         </div>
         <div class="card-body">
           <p class="card-text">{{ n.description }}</p>
         </div>
-        <div class="card-footer">
-          <div class="row text-center">
+        <div class="card-footer bg-dark bg-gradient">
+          <div class="row text-center text-light">
             <div class="col-lg-6">
               <p class="card-text">
                 <i class="bi bi-envelope"></i> {{ n.email }}

@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+  <a class="navbar-brand ms-3">S H E</a>
   <button
     class="navbar-toggler"
     type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent"
     aria-expanded="false"
     aria-label="Toggle navigation"
@@ -14,17 +14,37 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home </a>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: currentTab === 'home' }"
+          routerLink="/"
+          >Home
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/she/ngo-login">NGO</a>
+        <a
+          class="nav-link"
+          [ngClass]="{ active: currentTab === 'ngo' }"
+          routerLink="/she/ngo-login"
+          >NGO</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/she/step-login">STEP</a>
+        <a
+          class="nav-link"
+          [ngClass]="{ active: currentTab === 'step' }"
+          routerLink="/she/step-login"
+          >STEP</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/she/admin-login">Admin</a>
+        <a
+          class="nav-link"
+          [ngClass]="{ active: currentTab === 'admin' }"
+          routerLink="/she/admin-login"
+          >Admin</a
+        >
       </li>
     </ul>
   </div>

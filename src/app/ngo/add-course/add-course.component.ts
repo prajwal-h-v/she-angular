@@ -37,7 +37,9 @@ export class AddCourseComponent implements OnInit {
 
   refreshCourses() {
     this.courses.splice(0);
-    this.ngoAuth.getCourse(this.ngo.ngoId).subscribe((courses) => {
+    this.ngoAuth.getCourse(false).subscribe((courses) => {
+      console.log(courses);
+
       for (let c of courses) {
         this.courses.push(c);
       }
@@ -52,7 +54,7 @@ export class AddCourseComponent implements OnInit {
     course.description = formValue.courseDescription;
     course.startDate = formValue.courseStart;
     course.durationMonth = formValue.courseDuration;
-    course.isJob = formValue.courseJobs;
+    course.jobOffered = formValue.courseJobs;
     course.location = formValue.courseLocation;
     course.ngoId = this.ngo.ngoId;
     console.log(course);

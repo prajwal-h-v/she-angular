@@ -3,7 +3,7 @@ export class Course {
   description: string;
   startDate: string;
   durationMonth: number;
-  isJob: string;
+  jobOffered: boolean;
   location: string;
   ngoId: number;
 
@@ -12,7 +12,7 @@ export class Course {
     this.description = '';
     this.startDate = '';
     this.durationMonth = 0;
-    this.isJob = '';
+    this.jobOffered = false;
     this.location = '';
     this.ngoId = 0;
   }

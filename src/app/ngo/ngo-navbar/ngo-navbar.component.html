@@ -1,51 +1,54 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <div class="nav-brand mx-3">{{ ngo.name }}</div>
-  <div class="container-fluid">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarExample01"
-      aria-controls="navbarExample01"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarExample01">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/ngo/dashboard"
-            [ngClass]="{ active: currentTab === 'home' }"
-            >Home</a
-          >
-        </li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient text-light">
+  <div class="nav-brand mx-3">
+    <strong> {{ greet }}</strong
+    >, {{ ngo.name }}
+  </div>
 
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/ngo/new-course"
-            [ngClass]="{ active: currentTab === 'new-course' }"
-            >Courses</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/ngo/new-accommodation"
-            [ngClass]="{ active: currentTab === 'new-accommodation' }"
-            >Accommodations</a
-          >
-        </li>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
-      </ul>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/ngo/dashboard"
+          [ngClass]="{ active: currentTab === 'home' }"
+          >Home</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/ngo/new-course"
+          [ngClass]="{ active: currentTab === 'new-course' }"
+          >Courses</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/ngo/new-accommodation"
+          [ngClass]="{ active: currentTab === 'new-accommodation' }"
+          >Accommodations</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
   </div>
 </nav>
 <!-- Navbar -->

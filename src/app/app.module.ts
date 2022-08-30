@@ -14,10 +14,11 @@ import { DashboardComponent } from './ngo/dashboard/dashboard.component';
 import { AddCourseComponent } from './ngo/add-course/add-course.component';
 import { AddAccommodationComponent } from './ngo/add-accommodation/add-accommodation.component';
 import { NgoNavbarComponent } from './ngo/ngo-navbar/ngo-navbar.component';
-import { CoursesComponent } from './ngo/courses/courses.component';
-import { AccommodationComponent } from './ngo/accommodation/accommodation.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgoStatusComponent } from './ngo/status/status.component';
+import { UnderContructionComponent } from './shared/under-contruction/under-contruction.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddCourseComponent,
     AddAccommodationComponent,
     NgoNavbarComponent,
-    CoursesComponent,
-    AccommodationComponent,
+    NgoStatusComponent,
+    UnderContructionComponent,
   ],
   imports: [
     BrowserModule,

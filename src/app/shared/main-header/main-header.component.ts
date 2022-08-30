@@ -5,7 +5,7 @@ import { GreetingService } from 'src/app/services/greeting.service';
 @Component({
   selector: 'app-main-header',
   templateUrl: './main-header.component.html',
-  styles: [],
+  styleUrls: ['./main-header.component.css'],
 })
 export class MainHeaderComponent implements OnInit {
   greeting: any;

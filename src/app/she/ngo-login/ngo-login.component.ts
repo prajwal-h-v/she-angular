@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -43,31 +44,70 @@ export class NgoLoginComponent implements OnInit {
   requestLogin() {
     let loginData = this.ngoLoginForm.getRawValue();
 
-    this.ngoAuth.login(loginData).subscribe((data: Ngo) => {
-      // console.log(JSON.stringify(data));
-      if (data !== null) {
-        sessionStorage.setItem('activeNgo', JSON.stringify(data));
-        this.router.navigate(['/ngo/dashboard']);
-        this.isError = false;
-      } else {
-        this.isError = true;
-        this.errorMessage = 'Invalid Credentials.!';
+    this.ngoAuth.login(loginData).subscribe(
+      (data: Ngo) => {
+        // console.log(JSON.stringify(data));
+        if (data !== null) {
+          sessionStorage.setItem('activeNgo', JSON.stringify(data));
+          this.router.navigate(['/ngo/dashboard']);
+          this.isError = false;
+        } else {
+          this.isError = true;
+          this.errorMessage = 'Invalid Credentials.!';
+          setTimeout(() => {
+            this.isError = false;
+            this.errorMessage = '';
+          }, 3000);
+        }
+      },
+      (error) => {
+        if (error.status === 0) {
+          this.isError = true;
+          this.errorMessage =
+            'Could not connect to server!\nPlease try again later';
+        }
+        setTimeout(() => {
+          this.isError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
-    });
+    );
   }
 
+  isSuccess = false;
+  successMsg = '';
   requestRegisterNgo() {
     let registerData = this.ngoRegisterForm.getRawValue();
     if (registerData.password !== registerData.confirmPassword) {
       this.isError = true;
       this.errorMessage = 'Password do not match';
+      setTimeout(() => {
+        this.isError = false;
+        this.errorMessage = '';
+      }, 3000);
       return;
     }
     this.isError = false;
-    this.ngoAuth.register(registerData).subscribe((data) => {
-      console.log(data);
-      this.ngoRegisterForm.reset();
-    });
+    this.ngoAuth.register(registerData).subscribe(
+      (data) => {
+        console.log(data);
+        this.ngoRegisterForm.reset();
+        this.isSuccess = true;
+        this.successMsg =
+          'Registered succesfully. Please use ' +
+          data.ngoId +
+          ' and your password to login';
+      },
+      (error) => {
+        console.log(error);
+        this.isError = true;
+        this.errorMessage = error;
+        setTimeout(() => {
+          this.isError = false;
+          this.errorMessage = '';
+        }, 3000);
+      }
+    );
   }
   isLogin: boolean = true;
   toggle(val: boolean) {

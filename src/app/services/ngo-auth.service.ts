@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../model/Course';
+import { Hostel } from '../model/Hostel';
 import { Ngo } from '../model/Ngo';
 
 @Injectable({
@@ -34,9 +35,9 @@ export class NgoAuthService {
     );
   }
 
-  getLocalNgo() {
+  getLocalNgo(): Ngo {
     let a = sessionStorage.getItem('activeNgo');
-    let ngo = a !== null ? JSON.parse(a) : null;
+    let ngo: Ngo = a !== null ? JSON.parse(a) : null;
     return ngo;
   }
   requestLogout() {
@@ -56,14 +57,47 @@ export class NgoAuthService {
     return this.httpClient.get<Ngo[]>('http://localhost:5001/ngo/getAll');
   }
 
-  getCourse(ngoId: number): Observable<Course[]> {
+  getCourse(verified: boolean): Observable<Course[]> {
     return this.httpClient.get<Course[]>(
-      'http://localhost:5001/course/list-course-by-ngo/' + ngoId
+      'http://localhost:5001/course/list-course-by-ngo/' +
+        this.getLocalNgo().ngoId +
+        '/' +
+        verified
     );
   }
-  getCourseCount(ngoId: number) {
+  getCourseCount() {
     return this.httpClient.get<Course[]>(
-      'http://localhost:5001/course/list-course-by-ngo/' + ngoId
+      'http://localhost:5001/course/list-course-by-ngo/' +
+        this.getLocalNgo().ngoId
+    );
+  }
+
+  getHostelList(verified: boolean) {
+    return this.httpClient.get<Hostel[]>(
+      'http://localhost:5001/accommodation/get-accommodation-by-ngo/' +
+        this.getLocalNgo().ngoId +
+        '/' +
+        verified
+    );
+  }
+
+  addHostel(hostel: Hostel) {
+    return this.httpClient.post<Hostel>(
+      'http://localhost:5001/accommodation/add',
+      hostel
+    );
+  }
+
+  getPendingCourses() {
+    return this.httpClient.get<Course[]>(
+      'http://localhost:5001/course/list-course-by-ngo-pending/' +
+        this.getLocalNgo().ngoId
+    );
+  }
+  getpendingHostel() {
+    return this.httpClient.get<Hostel[]>(
+      'http://localhost:5001/accommodation/get-accommodation-by-ngo-pending/' +
+        this.getLocalNgo().ngoId
     );
   }
 }
