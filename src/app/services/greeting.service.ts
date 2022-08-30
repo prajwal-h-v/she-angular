@@ -11,6 +11,6 @@ export class GreetingService {
   constructor(private httpClient: HttpClient) {}
 
   getGreeting(): Observable<Greeting> {
-    return this.httpClient.get<Greeting>('http://localhost:5001/greet');
+    return this.httpClient.get<Greeting>('http://localhost:9090/greet');
   }
 }

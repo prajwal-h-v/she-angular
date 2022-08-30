@@ -10,17 +10,19 @@ import { HomeComponent } from './she/home/home.component';
 import { NgoLoginComponent } from './she/ngo-login/ngo-login.component';
 import { StepLoginComponent } from './she/step-login/step-login.component';
 import { StepHeaderComponent } from './step/step-header/step-header.component';
+import { StepHomeComponent } from './step/step-home/step-home.component';
 import { SukanyaHomeComponent } from './step/sukanya/sukanya-home/sukanya-home.component';
 import { RegisterComponent } from './step/sukanya/sukanya-register/register.component'; 
 
 const routes: Routes = [
-  {path:"sukanyaHome", component: SukanyaHomeComponent},
+  {path:"step/sukanya/sukanya-home", component: SukanyaHomeComponent},
   {path:"sukanyaRegister", component: RegisterComponent},
   { path: 'she', component: HomeComponent },
   { path: 'she/ngo-login', component: NgoLoginComponent },
   { path: 'she/step-login', component: StepLoginComponent },
   { path: 'she/admin-login', component: AdminLoginComponent },
   { path: 'step/step-header', component: StepHeaderComponent},
+  { path: 'step/step-home', component: StepHomeComponent},
   { path: 'ngo/dashboard', component: DashboardComponent },
   { path: 'ngo/new-course', component: AddCourseComponent },
   { path: 'ngo/new-accommodation', component: AddAccommodationComponent },

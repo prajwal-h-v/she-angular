@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SukanyaNavbarComponent } from './sukanya-navbar.component';
+import { StepNavbarComponent } from './step-navbar.component';
 
-describe('SukanyaNavbarComponent', () => {
-  let component: SukanyaNavbarComponent;
-  let fixture: ComponentFixture<SukanyaNavbarComponent>;
+describe('StepNavbarComponent', () => {
+  let component: StepNavbarComponent;
+  let fixture: ComponentFixture<StepNavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SukanyaNavbarComponent ]
+      declarations: [ StepNavbarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SukanyaNavbarComponent);
+    fixture = TestBed.createComponent(StepNavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
