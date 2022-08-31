@@ -21,7 +21,7 @@ getCourses(): Observable<Course[]> {
   courses:Course[] =[];
   constructor(private httpClient:HttpClient) { this.data.forEach(element => {
     let course :Course = new Course();
-    course.courseTitle= element.title;
+    course.title= element.title;
     course.tags= [element.category];
     course.description= element.description;
     course.courseMode= element.mode[0];

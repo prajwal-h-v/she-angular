@@ -18,8 +18,12 @@ export class UserRegisterDetails {
   residenceArea: ResidenceArea;
   maritalStatus: MaritalStatus;
   disabled: Disability;
+ // document: UserDocumentDetails;
 
-  document: UserDocumentDetails;
+ 
+  // upendra's code req
+  conPassword:string;
+ 
 }
 
 enum Gender {

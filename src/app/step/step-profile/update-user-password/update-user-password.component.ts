@@ -57,8 +57,8 @@ export class UpdateUserPasswordComponent implements OnInit {
         .subscribe((response) => {
           if (response) {
             this.openSnackBar('Password Reset Successfull', 'DISMISS');
-            this.route.navigate(['userLoginAndRegister']);
-            sessionStorage.removeItem('userDetails');
+            // this.route.navigate(['userLoginAndRegister']);
+            // sessionStorage.removeItem('userDetails');
           }
         });
     } else {

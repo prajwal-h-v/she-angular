@@ -15,9 +15,13 @@ export class SukanyaRegisterComponent implements OnInit {
   errorMessage="";
   showMsg: Boolean=false; 
   sukanyaDoc: any = File;
+  age:any;
+  currentDate = new Date();
   constructor(private sukanyaService:SukanyaService) { 
  
   }
+
+
 
   ngOnInit(): void {
     this.minDate.setFullYear(this.minDate.getFullYear() - 10);
@@ -27,7 +31,11 @@ export class SukanyaRegisterComponent implements OnInit {
     this.sukanyaDoc = event.target.files[0]; 
   }
 
+
+
   register(){
+
+    
     if(this.sukanyaReg.firstName===undefined || this.sukanyaReg.firstName===""){
       this.errorMessage="Please Enter First Name";
       return ;
@@ -36,7 +44,7 @@ export class SukanyaRegisterComponent implements OnInit {
       return ;
     }
     if(this.sukanyaReg.dateOfBirth===undefined){
-      this.errorMessage="Please Date of Birth";
+      this.errorMessage="Please Enter Date of Birth and age should be greater than 10";
       return ;
     }
     if(this.sukanyaReg.aadharNumber===undefined || this.sukanyaReg.aadharNumber==="" ||this.sukanyaReg.aadharNumber.length<12){

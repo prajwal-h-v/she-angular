@@ -53,6 +53,7 @@
   .fields-row {
     display: flex;
     width: 100%;
+    align-items: center;
   }
   
   .three-fields {

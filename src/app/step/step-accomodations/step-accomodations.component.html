@@ -11,11 +11,10 @@
                 </div>
                 <div class="card-details card-body h-100 d-flex flex-column justify-content-between">
                     <div>
-                        <p>{{accomodation.accommodationId}}</p>
-                        <p class="card-text"><strong>Location :</strong> {{accomodation.addressLine1 +" "+accomodation.addressLine2 +" "+accomodation.landmark}}</p>
+                        <p class="card-text"><strong>Location :</strong> {{accomodation.addressLane1 +" , "+accomodation.addressLane2}}</p>
                         <p class="card-text"><strong>City : </strong>{{accomodation.city}}</p>
                         <p class="card-text"><strong>State : </strong>{{accomodation.state}}</p>
-                        <p class="card-text"><strong>Pin Code :</strong> {{accomodation.pincode}}</p>
+                        <p class="card-text"><strong>Pin Code :</strong> {{accomodation.pincode ? accomodation.pincode : "Not available"}}</p>
                         <p class="card-text"><strong>Day Care Center :</strong> {{accomodation.dayCareCentre?"Available":"Not Available"}}</p>
                         <p class="card-text"><strong>Available Rooms :</strong> {{accomodation.roomAvailable}}</p>
                     </div>

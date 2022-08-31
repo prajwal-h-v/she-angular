@@ -33,6 +33,7 @@ export class StepCoursesComponent implements OnInit {
   }
 
   register(courseId: number){
+    console.log(this.user);
     this.courseService.enrollForCourse(this.user.userId, courseId).subscribe(enrollment=>{
       this.snackBar.open("Successfully Enrolled","action");
     });

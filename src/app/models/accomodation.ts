@@ -4,8 +4,8 @@ export class Accommodation {
     public ngo_id: number;
     public state: string;
     public city: string;
-    public addressLine1: string;
-    public addressLine2: string;
+    public addressLane1: string;
+    public addressLane2: string;
     public pincode: string;
     public landmark: string;
     public totalRoom: number;

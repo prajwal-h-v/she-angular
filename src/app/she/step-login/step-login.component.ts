@@ -1,108 +1,93 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserId } from '../../models/user-id';
-import { UserLogin } from '../../models/user-login';
-import { UserRegisterDetails } from '../../models/user-register-details';
-import { UserServiceService } from '../../services/user-service.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+// import { STEP } from 'src/app/models/STEP';
 
-
+import {UserRegisterDetails} from '../../models/user-register-details';
+import { UserLogin } from 'src/app/models/user-login';
+import { UserServiceService } from 'src/app/services/user-service.service';
 @Component({
   selector: 'app-step-login',
   templateUrl: './step-login.component.html',
-  styleUrls: ['./step-login.component.css']
+  styles: [
+  ]
 })
 export class StepLoginComponent implements OnInit {
 
-  isLoginForm: boolean = true;
-  showLoginPassword: boolean = false;
-  showRegisterPassword: boolean = false;
-  showRegisterConfirmPassword: boolean = false;
-  pageState: string = 'login';
-  userLoginData: UserLogin = new UserLogin();
-  isValidUser: boolean;
-  userId: UserId = new UserId();
-  userProfile: UserRegisterDetails = new UserRegisterDetails();
-  confirmPassword: string;
-  constructor(
-    private userService: UserServiceService,
-    private route: Router,
-    private _snackBar: MatSnackBar
-  ) {}
+  stepLoginForm: FormGroup;
+  stepRegForm: FormGroup;
+  isError: boolean=false;
+  errorMessage: String="Error in Login";
+  step_members: Array<UserRegisterDetails>;
 
-  ngOnInit(): void {}
 
-  showLoginPage() {
-    this.pageState = 'login';
-  }
-  showRegisterPage() {
-    this.pageState = 'register';
-  }
-  showResetPasswordPage() {
-    this.pageState = 'updatePassword';
-  }
-  toggleLoginPasswordVisibility(): void {
-    this.showLoginPassword = !this.showLoginPassword;
-  }
-  toggleRegisterPasswordVisibility(): void {
-    this.showRegisterPassword = !this.showRegisterPassword;
-  }
-  toggleRegisterConfirmPasswordVisibility(): void {
-    this.showRegisterConfirmPassword = !this.showRegisterConfirmPassword;
-  }
+  constructor(  private userService: UserServiceService, private router: Router) { 
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this.stepLoginForm = new FormGroup({
+      userId: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+
+    this.step_members = new Array<UserRegisterDetails>();
+    
+
+    this.stepRegForm = new FormGroup({
+      firstName: new FormControl('', Validators.required),
+      middleName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      disabled: new FormControl('', Validators.required),
+      dob: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      contactNo: new FormControl('', Validators.required),
+      aadharNo: new FormControl('', Validators.required),
+      panNo: new FormControl('', Validators.required),
+      jobStatus: new FormControl('', Validators.required),
+      jobTitle: new FormControl('', Validators.required),
+      salary: new FormControl('', Validators.required),
+      residenceArea: new FormControl('', Validators.required),
+      maritalStatus: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      conPassword: new FormControl('', Validators.required),
+    });
   }
 
-  userLogin() {
-    this.userService.loginUser(this.userLoginData).subscribe((msg) => {
-      this.isValidUser = msg;
-      if (this.isValidUser) {
-        this.userId.userId = this.userLoginData.userId;
-        this.userService
-          .getUserDetails(this.userId)
-          .subscribe((userDetails) => {
-            sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
-            this.route.navigate(['/step/stepdashboard']);
-          });
+  requestLoginStep(){
+    let loginData = this.stepLoginForm.getRawValue();
+
+    this.userService.loginUser(loginData).subscribe((data: UserLogin) => {
+      // console.log(JSON.stringify(data));
+      if (data !== null) {
+        //sessionStorage.setItem('activeNgo', JSON.stringify(data));
+        this.router.navigate(['/step/stepdashboard']);
+        this.isError = false;
       } else {
-        this.openSnackBar('Invalid Login Credentials', 'Try Again');
-        this.isValidUser = false;
+        this.isError = true;
+        this.errorMessage = 'Invalid Credentials.!';
       }
     });
   }
 
-  registerUser(): void {
-    if (this.confirmPassword == this.userProfile.password)
-      this.userService
-        .registerUser(this.userProfile)
-        .subscribe((registerSuccessfull) => {
-          if (registerSuccessfull) {
-            this.openSnackBar('Sign Up Successfull', 'DISMISS');
-            window.location.reload();
-          }
-        });
-    else {
-      this.openSnackBar('Sign Up Error', 'Try Again');
-    }
-  }
+  // requestRegisterStep(){
+  //   let registerData = this.stepRegForm.getRawValue();
+  //   if (registerData.password !== registerData.conPassword) {
+  //     this.isError = true;
+  //     this.errorMessage = 'Password do not match';
+  //     return;
+  //   }
+  //   this.isError = false;
+  //   this.userService.register(registerData).subscribe((data) => {
+  //     console.log(data);
+  //     this.stepRegForm.reset();
+  //   });
+  // }
 
-  passwordReset() {
-    // console.log(this.userId.userId);
-    this.openSnackBar(`Request Sent`, 'WAIT');
-    this.userService.resetPassword(this.userId).subscribe((response) => {
-      if (response) {
-        this.openSnackBar('Password Reset', 'Check Email!');
-        this.pageState = 'login';
-      }
-    });
-    this.openSnackBar(`Couldn't Reset Password`, 'Try Again');
-    this.pageState = 'register';
+  ngOnInit(): void { 
   }
+  
+  isLogin:boolean=true;
+  toggle(val: boolean){
+    this.isLogin=val;
+  }
+ 
 }
-
-
-
-
-

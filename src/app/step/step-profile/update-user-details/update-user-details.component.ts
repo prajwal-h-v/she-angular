@@ -14,7 +14,8 @@ export class UpdateUserDetailsComponent implements OnInit {
   showRegisterPassword: boolean = false;
   showRegisterConfirmPassword: boolean = false;
   userDetails: UserProfileDetails = new UserProfileDetails();
-  isValidUser: boolean = false;
+  // isValidUser: boolean = false;
+isValidUser:UserLogin;
   userLoginDetails: UserLogin = new UserLogin();
   password: string;
   
@@ -38,13 +39,14 @@ export class UpdateUserDetailsComponent implements OnInit {
   }
 
   updateUserProfileDetails(): void {
-    // console.log(this.userDetails);
+   
     this.openSnackBar(`Request Sent`, 'DISMISS');
     this.userLoginDetails.userId = this.userDetails.userId;
     this.userService.loginUser(this.userLoginDetails).subscribe((response) => {
       this.isValidUser = response;
       console.log(this.isValidUser);
-      if (this.isValidUser) {
+      // modified !=null
+      if (this.isValidUser!=null) {
         console.log(this.isValidUser);
         this.userService
           .updateUserDetails(this.userDetails)

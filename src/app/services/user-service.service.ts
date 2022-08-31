@@ -8,6 +8,7 @@ import { UserLogin } from '../models/user-login';
 import { UserProfileDetails } from '../models/user-profile-details';
 import { UserRegisterDetails } from '../models/user-register-details';
 import {Course} from '../models/course';
+import { Accommodation } from '../models/accomodation';
 
 
 @Injectable({
@@ -16,20 +17,36 @@ import {Course} from '../models/course';
 export class UserServiceService {
   constructor(private httpClient: HttpClient) {}
 
-  loginUser(userLoginData: UserLogin): Observable<boolean> {
-    console.log(userLoginData);
-    return this.httpClient.post<boolean>(
-      'http://localhost:9090/users/userLogin',
-      userLoginData
-    );
-  }
 
-  registerUser(userRegisterData: UserRegisterDetails): Observable<boolean> {
-    return this.httpClient.post<boolean>(
-      'http://localhost:9090/users/signup',
-      userRegisterData
+
+
+  loginUser(data: any): Observable<UserLogin> {
+    console.log(data);
+    let logindata = { userId: data.userId, password: data.password};
+    return this.httpClient.post<UserLogin>(
+      'http://localhost:9090/users/userLogin',
+      logindata
     );
-  }
+}
+
+
+
+// ----------------------------old--------------------------------
+//   loginUser(userLoginData: UserLogin): Observable<boolean> {
+//     console.log(userLoginData);
+//     return this.httpClient.post<boolean>(
+//       'http://localhost:9090/users/userLogin',
+//       userLoginData
+//     );
+//   }
+
+//   registerUser(userRegisterData: UserRegisterDetails): Observable<boolean> {
+//     return this.httpClient.post<boolean>(
+//       'http://localhost:9090/users/signup',
+//       userRegisterData
+//     );
+//   }
+// ---------------------------------------------------------------------------
 
   getUserDetails(userId: UserId): Observable<UserProfileDetails> {
     return this.httpClient.post<UserProfileDetails>(
@@ -63,6 +80,7 @@ export class UserServiceService {
   }
 
   addFamilyMember(familyMember: FamilyMember): Observable<FamilyMember> {
+    console.log(familyMember);
     return this.httpClient.post<FamilyMember>(
       'http://localhost:9090/users/addFamilyMember',
       familyMember
@@ -77,10 +95,16 @@ export class UserServiceService {
   }
 
 
-
+  // step dashboard
   getCourseDetails(userId:number): Observable<Course[]> {
     return this.httpClient.get<Course[]>(
-      'http:///localhost:9090/users/list-course-by-user/'+ userId
+      'http://localhost:9090/users/list-course-by-user/'+ userId
+    );
+  }
+
+  getAccomDetails(userId:number): Observable<Accommodation[]> {
+    return this.httpClient.get<Accommodation[]>(
+      'http://localhost:9090/users/list-accommodation-by-user/'+ userId
     );
   }
 

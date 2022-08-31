@@ -1,7 +1,9 @@
 export class Course {
-    public courseId:number;
+    // public courseId:number;
+    public courseID:number;
     public ngo_id:number;
-    public courseTitle: string;
+    // public courseTitle: string;
+    public title: string;
     public description: string;
     public startDate: Date;
     public durationMonth: number; 

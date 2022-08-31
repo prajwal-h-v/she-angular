@@ -57,10 +57,11 @@ import {MatDividerModule} from '@angular/material/divider';
     StepProfileComponent, 
     StepSukanyaComponent, 
     SukanyaRegisterComponent, 
-    UpdateUserDetailsComponent, 
+    UpdateUserDetailsComponent,    
     UpdateUserPasswordComponent, 
     AddFamilyDetailsComponent
   ],
+
   imports: [
     BrowserModule, 
     AppRoutingModule,
@@ -88,7 +89,7 @@ import {MatDividerModule} from '@angular/material/divider';
   providers: [
     HttpClient,
     HttpClientModule,
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
   ],
   bootstrap: [AppComponent],
 })

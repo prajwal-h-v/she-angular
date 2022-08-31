@@ -12,6 +12,7 @@
   .fields-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   @media screen and (max-width:786px) {
@@ -28,10 +29,18 @@
     width: 100%;
     /* text-decoration: underline; */
     /* border-bottom: 1px solid black; */
+    /* padding: 0; */
+  }
+
+  
+
+mat-form-field mat-form-field-flex{
+    padding: 0;
+    align-items: center !important;
   }
   
   .form-field-space {
-    margin: 2%;
+    /* margin: 2%; */
   }
   
   .radio-btn-group {
@@ -43,5 +52,13 @@
   
   mat-radio-button {
     margin: 1rem;
+    color: darkgreen !important;
   }
+
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: darkgreen !important;
+}
   
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: #198754 !important;
+}
