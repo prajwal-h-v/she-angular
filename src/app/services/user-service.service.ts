@@ -27,7 +27,43 @@ export class UserServiceService {
       'http://localhost:9090/users/userLogin',
       logindata
     );
-}
+  }
+
+  // register(userRegisterData: UserRegisterDetails) {
+  //       console.log(userRegisterData);
+  //   let data = JSON.stringify(userRegisterData);
+  //   return this.httpClient.post<UserRegisterDetails>(
+  //     'http://localhost:9090/users/signup',
+  //     data
+  //   );
+  // }
+  register(data: any) {
+    let regData = {
+        firstName: data.firstName,
+        middleName: data.middleName,
+        lastName: data.lastName,
+        gender: data.gender,
+        disabled: data.disabled,
+        dob: data.dob,
+        email: data.email,
+        contactNo: data.contactNo,
+        aadharNo: data.aadharNo,
+        panNo: data.panNo,
+        jobStatus: data.jobStatus,
+        jobTitle: data.jobTitle,
+        salary: data.salary,
+        residenceArea: data.residenceArea,
+        maritalStatus: data.maritalStatus,
+        password: data.password,
+        conPassword: data.conPassword,
+    };
+
+    console.log(JSON.stringify(regData));
+    return this.httpClient.post<UserRegisterDetails>(
+      'http://localhost:9090/users/signup',
+      regData
+    );
+  }
 
 
 

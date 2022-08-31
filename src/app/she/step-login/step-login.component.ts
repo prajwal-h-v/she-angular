@@ -67,20 +67,26 @@ export class StepLoginComponent implements OnInit {
       }
     });
   }
-
-  // requestRegisterStep(){
-  //   let registerData = this.stepRegForm.getRawValue();
-  //   if (registerData.password !== registerData.conPassword) {
-  //     this.isError = true;
-  //     this.errorMessage = 'Password do not match';
-  //     return;
-  //   }
-  //   this.isError = false;
-  //   this.userService.register(registerData).subscribe((data) => {
-  //     console.log(data);
-  //     this.stepRegForm.reset();
-  //   });
-  // }
+  isSuccess = false;
+  successMsg = '';
+  requestRegisterStep(){
+    let registerData = this.stepRegForm.getRawValue();
+    if (registerData.password !== registerData.conPassword) {
+      this.isError = true;
+      this.errorMessage = 'Password do not match';
+      return;
+    }
+    this.isError = false;
+    this.userService.register(registerData).subscribe((data) => {
+      console.log(data);
+      this.stepRegForm.reset();
+      this.isSuccess = true;
+        this.successMsg =
+          'Registered succesfully. Please use ' +
+          data.userId +
+          ' and your password to login';
+    });
+  }
 
   ngOnInit(): void { 
   }

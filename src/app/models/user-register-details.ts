@@ -18,6 +18,7 @@ export class UserRegisterDetails {
   residenceArea: ResidenceArea;
   maritalStatus: MaritalStatus;
   disabled: Disability;
+  userId:number;
  // document: UserDocumentDetails;
 
  
