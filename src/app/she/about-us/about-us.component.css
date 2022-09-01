@@ -1,0 +1,19 @@
+h2{
+    font-family: fantasy;
+    text-align: center;
+}
+h3{
+    font-family: Copperplate, Papyrus, fantasy;
+}
+p,ol,ul{
+    font-family: cursive;
+}
+
+hr{
+    position: relative;
+    top: 20px;
+    border: none;
+    height: 12px;
+    background: black;
+    margin-bottom: 50px;
+}

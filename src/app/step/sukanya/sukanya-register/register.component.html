@@ -1,9 +1,9 @@
 <app-step-header></app-step-header>
 <app-step-navbar></app-step-navbar>
-<div class="container">
+<div class="container" style="margin: 10px;">
 
     <div class="text-center" *ngIf="errorMessage!==''|| errorMessage!==null || errorMessage!==undefined " style="color: red;">
-        <p class="alert alert-success" style="margin-top: 10px;">
+        <p class="alert" style="margin-top: 10px;">
             {{errorMessage}}
         </p>
     </div>
@@ -48,12 +48,12 @@
                 <div class="form-group">
                     <!-- Register Button -->
                     <div class="text-center">
-                        <button class="btn btn-primary" style="align-items: center;" type="submit" value="Submit">Register</button>
+                        <button class="btn btn-primary" style="align-items: center; margin: 10px;" type="submit" value="Submit">Register</button>
                     </div>
                 </div>
                 <div class="row" *ngIf="showMsg">
                     <div class="col-xs-12">
-                        <p class="alert alert-success" style="margin-top: 10px;">
+                        <p class="alert alert-success" style="margin: 10px;">
                             <strong>Registration Success!</strong>
                         </p>
                     </div>

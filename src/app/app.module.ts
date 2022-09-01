@@ -22,6 +22,7 @@ import { CoursesComponent } from './ngo/courses/courses.component';
 import { DashboardComponent } from './ngo/dashboard/dashboard.component';
 import { NgoNavbarComponent } from './ngo/ngo-navbar/ngo-navbar.component';
 import { StepNavbarComponent } from './step/step-navbar/step-navbar.component';
+import { AboutUsComponent } from './she/about-us/about-us.component';
 
 @NgModule({
   declarations: [AppComponent, SukanyaHomeComponent, 
@@ -33,7 +34,7 @@ import { StepNavbarComponent } from './step/step-navbar/step-navbar.component';
                   AdminLoginComponent, NgoLoginComponent, 
                   AccommodationComponent, AddAccommodationComponent,
                   AddCourseComponent, CoursesComponent, 
-                  DashboardComponent, NgoNavbarComponent, StepNavbarComponent],
+                  DashboardComponent, NgoNavbarComponent, StepNavbarComponent, AboutUsComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule ,
             FormsModule, HttpClientModule],
   providers: [HttpClientModule],

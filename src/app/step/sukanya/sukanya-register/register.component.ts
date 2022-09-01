@@ -39,17 +39,29 @@ export class RegisterComponent implements OnInit {
      
     if(registerData.firstName===undefined || registerData.firstName===""){
       this.errorMessage="Please Enter First Name";
+      setTimeout(() => { 
+        this.errorMessage = '';
+      }, 3000);
       return ;
     }if(registerData.lastName===undefined || registerData.lastName===""){
       this.errorMessage="Please Enter Last Name";
+      setTimeout(() => { 
+        this.errorMessage = '';
+      }, 3000);
       return ;
     }
-    if(registerData.dob===undefined){
-      this.errorMessage="Please Date of Birth";
+    if(registerData.dob===undefined || registerData.dob===""){
+      this.errorMessage="Please Enter Date of Birth";
+      setTimeout(() => { 
+        this.errorMessage = '';
+      }, 3000);
       return ;
     }
     if(registerData.aadharNo===undefined || registerData.aadharNo==="" ||registerData.aadharNo.length<12){
       this.errorMessage="Please Enter Valid Aadhar Number";
+      setTimeout(() => { 
+        this.errorMessage = '';
+      }, 3000);
       return ;
     }  
     // console.log(registerData.dob.substring(0,4));
@@ -57,13 +69,21 @@ export class RegisterComponent implements OnInit {
     if(registerData.dob.substring(0,4)<this.minDate.getFullYear()){
 
       this.errorMessage="Child should be below 10 years";
+      setTimeout(() => { 
+        this.errorMessage = '';
+      }, 3000);
       return ;
     }
     // if(this.sukanyaReg.aadharDoc===undefined){
     //   this.errorMessage="Please Uplaod Aadhar";
     //   return ;
     // }
-    this.sukanyaService.register(registerData).subscribe(_msg=>{this.showMsg=true;})
+    this.sukanyaService.register(registerData).subscribe(_msg=>{
+      this.showMsg=true;
+      setTimeout(() => { 
+        this.showMsg = false;
+      }, 3000);
+    })
     this.sukanyaRegForm.reset();
 
   }

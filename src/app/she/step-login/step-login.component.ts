@@ -70,18 +70,33 @@ export class StepLoginComponent implements OnInit {
     if (registerData.stepPwd !== registerData.stepConPwd) {
       this.isError = true;
       this.errorMessage = 'Password do not match';
+      setTimeout(() =>{
+        this.isError = false;
+        this.errorMessage = '';
+      }, 3000)
       return;
     }
     this.isError = false;
-    this.stepAuth.register(registerData).subscribe((data) => {
-      console.log(data);
-      this.stepRegForm.reset();
-      this.isSuccess = true;
-      this.successMsg = 
-      'Registered succesfully. Please use ' +
-        data.stepId +
-      ' and your password to login';
-    });
+    this.stepAuth.register(registerData).subscribe(
+      (data) => {
+        console.log(data);
+        this.stepRegForm.reset();
+        this.isSuccess = true;
+        this.successMsg = 
+          'Registered succesfully. Please use ' +
+            data.stepId +
+          ' and your password to login';
+    },
+    (error) => {
+      console.log(error);
+      this.isError = true;
+      this.errorMessage = error;
+      setTimeout(() => {
+        this.isError = false;
+        this.errorMessage = '';
+      }, 3000);
+    }
+    );
   }
 
   ngOnInit(): void { 
