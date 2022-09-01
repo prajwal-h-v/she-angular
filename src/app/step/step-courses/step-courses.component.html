@@ -6,11 +6,11 @@
   <div class="courses-container col-md-12 row">
     <div class="col-md-4 my-3" *ngFor="let course of courses">
       <div class="card h-100">
-        <div class="card-header">
+        <div class="card-header bg-green bg-gradient text-light">
           <h4 class="card-title mb-0">{{ course.title }}</h4>
         </div>
         <div
-          class="card-details card-body d-flex flex-column justify-content-between"
+          class="card-details card-body d-flex flex-column justify-content-between bg-green-light text-dark"
         >
           <div>
             <p class="card-text">
@@ -30,9 +30,9 @@
               <strong>Location :</strong>{{ course.location }}
             </p>
           </div>
-          <div class="d-flex justify-content-between mt-3">
+          <div class="d-flex justify-content-between mt-3 mx-auto">
             <button
-              class="btn btn-primary creg"
+              class="btn btn-dark bg-green creg"
               id="creg"
               (click)="register(course.courseID)"
               *ngIf="!isEnroll(course)"

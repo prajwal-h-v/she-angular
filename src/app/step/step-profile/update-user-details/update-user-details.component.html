@@ -57,7 +57,7 @@
       </div>
     </span>
 
-    <span class="fields-row col-12">
+    <span class="fields-row col-12 my-3">
       <div class="col-4 px-2">
         <div>
           <span class="radio-btn-group">
@@ -126,7 +126,7 @@
       </div>
     </span>
 
-    <span class="fields-row col-12">
+    <span class="fields-row col-12 my-3">
       <div class="d-flex flex-column col-4 px-2">
         <div>
           <mat-label>Contact Number</mat-label>
@@ -187,7 +187,7 @@
       </div>
     </span>
 
-    <span class="fields-row col-12">
+    <span class="fields-row col-12 my-3">
       <div class="d-flex flex-column col-6 px-2">
         <div>
           <mat-label>Email</mat-label>
@@ -221,7 +221,7 @@
             />
             <mat-error *ngIf="password.invalid">At least 8 charactes</mat-error>
             <mat-icon matSuffix (click)="toggleRegisterPasswordVisibility()">
-              {{ showRegisterPassword ? "Not visible" : "visibility" }}
+              {{ showRegisterPassword ? "visibility_off" : "visibility" }}
             </mat-icon>
           </mat-form-field>
         </div>

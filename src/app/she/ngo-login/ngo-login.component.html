@@ -4,10 +4,10 @@
     <div class="col-lg-6" *ngIf="isLogin">
       <div class="card m-3">
         <form [formGroup]="ngoLoginForm" (ngSubmit)="requestLogin()">
-          <div class="card-header bg-success bg-gradient text-light">
+          <div class="card-header bg-green bg-gradient text-light">
             <h4 class="my-1">NGO Login</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body bg-green-light">
             <div class="form-group">
               <label for="ngo-id">NGO ID</label>
               <input
@@ -27,7 +27,7 @@
               />
             </div>
           </div>
-          <div class="card-footer bg-success bg-gradient text-center">
+          <div class="card-footer bg-green bg-gradient text-center">
             <button
               class="btn btn-outline-light"
               type="submit"
@@ -52,9 +52,9 @@
       <div class="card m-3">
         <form [formGroup]="ngoRegisterForm" (ngSubmit)="requestRegisterNgo()">
           <div class="card-header bg-dark bg-gradient text-light">
-            <h5>NGO Register</h5>
+            <h4 class="m-1">NGO Register</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body bg-green-light">
             <div class="form-group">
               <label for="ngo-name">NGO Name</label>
               <input
@@ -131,7 +131,7 @@
               {{ successMsg }}
             </div>
             <hr />
-            <button class="btn btn-success" (click)="toggle(true)">
+            <button class="btn btn-dark btn-green" (click)="toggle(true)">
               Login Here
             </button>
           </div>
@@ -146,7 +146,7 @@
         <div class="card-header bg-dark bg-gradient text-light">
           {{ n.name }}, {{ n.address }}
         </div>
-        <div class="card-body">
+        <div class="card-body bg-green-light">
           <p class="card-text">{{ n.description }}</p>
         </div>
         <div class="card-footer bg-dark bg-gradient">

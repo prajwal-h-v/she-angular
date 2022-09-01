@@ -1,100 +1,91 @@
 <app-step-navbar [currentTab]="'step-sukanya'"></app-step-navbar>
-
 <div class="container">
-  <div
-    class="div"
-    *ngIf="
-      errorMessage !== '' || errorMessage !== null || errorMessage !== undefined
-    "
-    style="color: red"
-  >
-    {{ errorMessage }}
+  <div class="alert alert-danger my-3" *ngIf="isErr">
+    <h3 class="m-2">{{ errorMessage }}</h3>
   </div>
-  <form class="row g-3 needs-validation" method="POST" (ngSubmit)="register()">
-    <h2 class="text-center">Registration Form</h2>
 
-    <!-- First Name -->
-    <div class="col-md-4">
-      <label for="firstname" class="form-label">First Name*</label>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="sukanyaReg.firstName"
-        id="firstname"
-        name="firstname"
-        placeholder="First Name"
-      />
-    </div>
+  <div class="row my-4">
+    <div class="col-lg-12">
+      <form [formGroup]="sukanyaRegForm" (ngSubmit)="register()">
+        <div class="card">
+          <div class="card-header bg-green text-light">
+            <h2 class="text-center m-2">Registration Form</h2>
+          </div>
 
-    <!-- Last Name-->
-    <div class="col-md-4">
-      <label for="lastname" class="form-label">Last Name*</label>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="sukanyaReg.lastName"
-        id="lastname"
-        name="lastname"
-        placeholder="Last Name"
-      />
-    </div>
+          <div class="card-body">
+            <!-- First Name -->
+            <div class="form-group my-2">
+              <label for="firstname" class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+              />
+            </div>
 
-    <!-- Date Of Birth -->
-    <div class="col-md-4">
-      <label for="dob" class="form-label">Date Of Birth*</label><br />
-      <input
-        type="date"
-        class="form-control"
-        [min]="minDate"
-        [max]="maxDate"
-        [(ngModel)]="sukanyaReg.dateOfBirth"
-        id="dob"
-        name="dob"
-      />
-    </div>
+            <!-- Last Name-->
+            <div class="form-group my-2">
+              <label for="lastname" class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastName"
+              />
+            </div>
 
-    <!-- Aadhar Number -->
-    <div class="col-md-4">
-      <label for="aadhar" class="form-label">Aadhar Number*</label>
-      <input
-        type="number"
-        class="form-control"
-        maxlength="12"
-        [(ngModel)]="sukanyaReg.aadharNumber"
-        id="aadhar"
-        name="aadhar"
-        pattern="[0-9]{12}"
-        placeholder="Aadhar Number"
-      />
-    </div>
+            <!-- Date Of Birth -->
+            <div class="form-group my-2">
+              <label for="dob" class="form-label">Date Of Birth</label><br />
+              <input type="date" class="form-control" formControlName="dob" />
+            </div>
 
-    <!-- Aadhar Upload -->
-    <div class="col-md-4">
-      <label for="formFile" class="form-label" (change)="fileUplaod($event)"
-        >Upload Aadhar</label
-      >
-      <input class="form-control" type="file" id="formFile" />
-    </div>
+            <!-- Aadhar Number -->
+            <div class="form-group my-2">
+              <label for="aadhar" class="form-label">Aadhar Number</label>
+              <input
+                type="number"
+                class="form-control"
+                maxlength="12"
+                pattern="[0-9]{12}"
+                formControlName="aadharNo"
+              />
+            </div>
 
-    <!-- Register Button -->
-    <div class="text-center">
-      <button
-        class="btn btn-primary"
-        style="align-items: center"
-        type="submit"
-        value="Submit"
-      >
-        Register
-      </button>
-    </div>
+            <!-- Aadhar Upload -->
+            <div class="form-group my-2">
+              <label
+                for="formFile"
+                class="form-label"
+                (change)="fileUplaod($event)"
+                >Upload Aadhar</label
+              >
+              <input class="form-control" type="file" id="formFile" />
+            </div>
+          </div>
+          <div class="card-footer bg-green">
+            <div class="form-group text-center">
+              <!-- Register Button -->
 
-    <div class="row" *ngIf="showMsg">
-      <div class="col-xs-12">
-        <p class="alert alert-success" style="margin-top: 10px">
-          <strong>Registration Success!</strong>
-        </p>
-      </div>
+              <button
+                class="btn btn-outline-light"
+                style="align-items: center; margin: 10px"
+                type="submit"
+                value="Submit"
+                [disabled]="!sukanyaRegForm.valid"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+          <div class="row" *ngIf="showMsg">
+            <div class="col-xs-12">
+              <p class="alert alert-success" style="margin: 10px">
+                <strong>Registration Success!</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
-<router-outlet></router-outlet>

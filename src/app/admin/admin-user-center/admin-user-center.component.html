@@ -1,0 +1,56 @@
+<app-admin-navbar [currentTab]="'user-center'"></app-admin-navbar>
+<div class="container p-5">
+  <div class="row my-5">
+    <div class="col-lg-12">
+      <div class="alert alert-dark bg-green-light text-center">
+        <h3 class="m-2">User Account Activation</h3>
+      </div>
+      <div
+        class="alert alert-success text-center my-5"
+        *ngIf="pUsers.length === 0"
+      >
+        <h3 class="m-1">No Pending Requests</h3>
+      </div>
+
+      <div class="card" *ngFor="let user of pUsers">
+        <div class="card-header bg-dark bg-gradient text-light">
+          <h4 class="m-1">
+            {{ user.firstName }} {{ user.middleName }} {{ user.lastName }}
+          </h4>
+        </div>
+        <div class="card-body bg-green-light text-dark">
+          <div class="row">
+            <div class="col-lg-6">
+              <p><strong>Email : </strong> {{ user.email }}</p>
+              <p><strong>Phone : </strong> {{ user.contactNo }}</p>
+              <p><strong>Aadhaar : </strong> {{ user.aadhaarNo }}</p>
+              <p><strong>PAN : </strong> {{ user.panNo }}</p>
+              <p><strong>DOB : </strong> {{ user.dob }}</p>
+            </div>
+            <div class="col-lg-6">
+              <p><strong>Gender : </strong> {{ user.gender }}</p>
+              <p><strong>Employment : </strong> {{ user.jobStatus }}</p>
+              <p><strong>Job Title</strong> {{ user.jobTitle }}</p>
+              <p><strong>Marital Status : </strong> {{ user.maritalStatus }}</p>
+              <p><strong>Disabled : </strong> {{ user.disabled }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-dark bg-gradient">
+          <div class="row">
+            <div class="col-lg-6 text-center my-2">
+              <button class="btn btn-success" (click)="acceptUser(user)">
+                <i class="bi bi-check-circle"></i> Activate
+              </button>
+            </div>
+            <div class="col-lg-6 text-center my-2">
+              <button class="btn btn-danger" (click)="deleteUser(user)">
+                <i class="bi bi-x-circle"></i> Reject
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

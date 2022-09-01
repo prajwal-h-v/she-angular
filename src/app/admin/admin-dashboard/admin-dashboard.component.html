@@ -4,33 +4,68 @@
     <div class="col-lg-8">
       <div class="alert alert-dark">
         <div class="row">
-          <div class="col-sm-9 text-center my-1">Pending NGO Request</div>
+          <div class="col-sm-9 text-center my-1">
+            <span *ngIf="pendingStats.ngoCount">
+              {{ pendingStats.ngoCount }}
+            </span>
+            Pending NGO Request
+          </div>
           <div class="col-sm-3 text-center my-1">
-            <button class="btn btn-dark bg-gradient">View</button>
+            <button
+              class="btn btn-dark bg-gradient"
+              routerLink="/admin/ngo-center"
+            >
+              View
+            </button>
           </div>
         </div>
       </div>
       <div class="alert alert-dark text-center">
         <div class="row">
-          <div class="col-sm-9 text-center my-1">Pending Course Request</div>
+          <div class="col-sm-9 text-center my-1">
+            <span *ngIf="pendingStats"> {{ pendingStats.courseCount }} </span
+            >Pending Course Request
+          </div>
           <div class="col-sm-3 text-center my-1">
-            <button class="btn btn-dark bg-gradient">View</button>
+            <button
+              class="btn btn-dark bg-gradient"
+              routerLink="/admin/ngo-center"
+            >
+              View
+            </button>
           </div>
         </div>
       </div>
       <div class="alert alert-dark text-center">
         <div class="row">
-          <div class="col-sm-9 text-center my-1">Pending Hostel Request</div>
+          <div class="col-sm-9 text-center my-1">
+            <span *ngIf="pendingStats"> {{ pendingStats.hostelCount }} </span
+            >Pending Hostel Request
+          </div>
           <div class="col-sm-3 text-center my-1">
-            <button class="btn btn-dark bg-gradient">View</button>
+            <button
+              class="btn btn-dark bg-gradient"
+              routerLink="/admin/ngo-center"
+            >
+              View
+            </button>
           </div>
         </div>
       </div>
       <div class="alert alert-dark text-center">
         <div class="row">
-          <div class="col-sm-9 text-center my-1">Pending User Request</div>
+          <div class="col-sm-9 text-center my-1">
+            <span *ngIf="pendingStats" routerLink="/admin/ngo-center">
+              {{ pendingStats.userCount }} </span
+            >Pending User Request
+          </div>
           <div class="col-sm-3 text-center my-1">
-            <button class="btn btn-dark bg-gradient">View</button>
+            <button
+              class="btn btn-dark bg-gradient"
+              routerLink="/admin/user-center"
+            >
+              View
+            </button>
           </div>
         </div>
       </div>
@@ -40,13 +75,15 @@
         <div class="card-header bg-dark bg-gradient text-light text-center">
           <h4 class="m-0">Statistics</h4>
         </div>
-        <div class="card-body bg-success text-light bg-gradient">
+        <div class="card-body bg-green text-light bg-gradient">
           <div class="row my-2">
             <div class="col-sm-6">
               <p class="card-text">Total NGOs Registered :</p>
             </div>
             <div class="col-sm-6">
-              <p class="card-text">4</p>
+              <p class="card-text">
+                {{ stats.ngoCount }}
+              </p>
             </div>
           </div>
           <div class="row my-2">
@@ -54,7 +91,7 @@
               <p class="card-text">Total Courses Offered :</p>
             </div>
             <div class="col-sm-6">
-              <p class="card-text">10</p>
+              <p class="card-text">{{ stats.coursesCount }}</p>
             </div>
           </div>
           <div class="row my-2">
@@ -62,7 +99,7 @@
               <p class="card-text">Total Hostels Managed :</p>
             </div>
             <div class="col-sm-6">
-              <p class="card-text">5</p>
+              <p class="card-text">{{ stats.hostelCount }}</p>
             </div>
           </div>
           <div class="row my-2">
@@ -70,7 +107,7 @@
               <p class="card-text">Total Active Users :</p>
             </div>
             <div class="col-sm-6">
-              <p class="card-text">12</p>
+              <p class="card-text">{{ stats.userCount }}</p>
             </div>
           </div>
         </div>

@@ -4,5 +4,32 @@
   font-size: 0.65em;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bg-green {
+  background-color: #3d5c5c;
+}
+.text-green {
+  color: #3d5c5c;
+}
+.bg-green-light {
+  background-color: #c2d6d6;
+}
+.bg-danger-light {
+  background-color: #f8d7da;
+}
+.btn-green {
+  background-color: #3d5c5c;
+  color: aliceblue;
+}
+.btn-green:hover {
+  background-color: #293d3d;
+  color: aliceblue;
+}

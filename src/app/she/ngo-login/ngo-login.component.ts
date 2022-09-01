@@ -1,4 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -48,9 +49,19 @@ export class NgoLoginComponent implements OnInit {
       (data: Ngo) => {
         // console.log(JSON.stringify(data));
         if (data !== null) {
-          sessionStorage.setItem('activeNgo', JSON.stringify(data));
-          this.router.navigate(['/ngo/dashboard']);
-          this.isError = false;
+          if (data.verified) {
+            sessionStorage.setItem('activeNgo', JSON.stringify(data));
+            this.router.navigate(['/ngo/dashboard']);
+            this.isError = false;
+          } else {
+            this.isError = true;
+            this.errorMessage =
+              'Your Account is not valid. Please try again later';
+            setTimeout(() => {
+              this.isError = false;
+              this.errorMessage = '';
+            }, 3000);
+          }
         } else {
           this.isError = true;
           this.errorMessage = 'Invalid Credentials.!';

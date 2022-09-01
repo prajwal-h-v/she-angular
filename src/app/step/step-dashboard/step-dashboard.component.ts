@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/model/Course';
+import { Greeting } from 'src/app/model/Greeting';
 import { Hostel } from 'src/app/model/Hostel';
 import { UserProfileDetails } from 'src/app/model/UserProfileDetails';
+import { GreetingService } from 'src/app/services/greeting.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,15 +14,21 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class StepDashboardComponent implements OnInit {
   courses: Course[];
-  accomodations: Hostel[];
+  accomodations: Hostel;
   snackBar: any;
   userLoginDetails: UserProfileDetails;
-
-  constructor(private userService: UserService, private router: Router) {}
+  greeting: Greeting;
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private greet: GreetingService
+  ) {}
 
   ngOnInit(): void {
     this.userLoginDetails = this.userService.getLocalUserDetails();
-
+    this.greet.getGreeting().subscribe((g) => {
+      this.greeting = g;
+    });
     if (this.userLoginDetails === null || this.userLoginDetails === undefined) {
       this.router.navigate(['/she/step-login']);
     }

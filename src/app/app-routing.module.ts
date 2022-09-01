@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminUserCenterComponent } from './admin/admin-user-center/admin-user-center.component';
 import { NgoCenterComponent } from './admin/ngo-center/ngo-center.component';
 
 import { AddAccommodationComponent } from './ngo/add-accommodation/add-accommodation.component';
 import { AddCourseComponent } from './ngo/add-course/add-course.component';
+import { CourseTraineesComponent } from './ngo/course-trainees/course-trainees.component';
 
 import { DashboardComponent } from './ngo/dashboard/dashboard.component';
 import { NgoStatusComponent } from './ngo/status/status.component';
@@ -29,8 +31,10 @@ const routes: Routes = [
   { path: 'ngo/new-course', component: AddCourseComponent },
   { path: 'ngo/new-accommodation', component: AddAccommodationComponent },
   { path: 'ngo/status', component: NgoStatusComponent },
+  { path: 'ngo/course-trainees', component: CourseTraineesComponent },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'admin/ngo-center', component: NgoCenterComponent },
+  { path: 'admin/user-center', component: AdminUserCenterComponent },
   { path: 'step/stepdashboard', component: StepDashboardComponent },
   { path: 'step/step-courses', component: StepCoursesComponent },
   { path: 'step/step-accomodations', component: StepAccomodationComponent },

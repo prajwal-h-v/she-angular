@@ -4,6 +4,7 @@ import { Admin } from '../model/Admin';
 import { Course } from '../model/Course';
 import { Hostel } from '../model/Hostel';
 import { Ngo } from '../model/Ngo';
+import { Statistics } from '../model/Statistics';
 
 @Injectable({
   providedIn: 'root',
@@ -81,5 +82,9 @@ export class AdminService {
       'http://localhost:5001/admin/delete-hostel',
       hostel.accommodationId
     );
+  }
+
+  getStatistics() {
+    return this.http.get<Statistics>('http://localhost:5001/admin/statistics');
   }
 }

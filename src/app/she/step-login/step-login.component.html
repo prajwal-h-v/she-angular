@@ -1,15 +1,15 @@
 <app-navbar [currentTab]="'step'"></app-navbar>
 
-<div class="container">
-  <div class="row justify-content-start">
-    <div class="col-lg-6">
+<div class="container-fluid bg-transparent">
+  <div class="row justify-content-start py-5 mx-5">
+    <div class="col-lg-6 my-5">
       <div *ngIf="isLogin">
-        <div class="card m-3 mt-4">
+        <div class="card mt-5 w-75">
           <form [formGroup]="stepLoginForm" (ngSubmit)="requestLoginStep()">
-            <div class="card-header">
+            <div class="card-header bg-green bg-gradient text-white">
               <h5>STEP Login</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-green-light">
               <div class="form-group">
                 <label for="step-id">STEP ID</label>
                 <input
@@ -27,23 +27,23 @@
                 />
               </div>
             </div>
-            <div class="card-footer text-center">
+            <div
+              class="card-footer text-center bg-green bg-gradient text-light"
+            >
               <button
-                class="btn btn-dark"
+                class="btn btn-light"
                 type="submit"
                 [disabled]="!stepLoginForm.valid"
               >
                 Login
               </button>
               <hr />
-              <button
-                class="btn btn-outline-primary cent"
-                (click)="toggle(false)"
-              >
+              <button class="btn btn-dark cent" (click)="toggle(false)">
                 New here? Chick here to Register
               </button>
               <div class="m-3 alert alert-danger" *ngIf="isError">
-                {{ errorMessage }}
+                <i class="bi bi-exclamation-triangle-fill text-danger"></i
+                >{{ errorMessage }}
               </div>
             </div>
           </form>
@@ -53,11 +53,11 @@
       <div *ngIf="!isLogin">
         <div class="card m-3 mt-4">
           <form [formGroup]="stepRegForm" (ngSubmit)="requestRegisterStep()">
-            <div class="card-header">
-              <h5>STEP Register</h5>
+            <div class="card-header bg-dark text-light">
+              <h4 class="m-1">STEP Register</h4>
             </div>
-            <div class="card-body">
-              <div class="form-group my-2">
+            <div class="card-body bg-green-light">
+              <div class="form-group my-3">
                 <label for="first_name">First Name</label>
                 <input
                   type="text"
@@ -66,7 +66,7 @@
                 />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="middle_name">Middle Name</label>
                 <input
                   type="text"
@@ -75,7 +75,7 @@
                 />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="last_name">Last Name</label>
                 <input
                   type="text"
@@ -84,19 +84,7 @@
                 />
               </div>
 
-              <div class="form-group my-2">
-                <label style="margin-right: 10px" for="gender">Gender</label>
-                <input type="radio" formControlName="gender" value="MALE" />
-                <label style="margin-right: 15px; margin-left: 7px" for="male"
-                  >Male</label
-                >
-                <input type="radio" formControlName="gender" value="FEMALE" />
-                <label for="female" style="margin-right: 15px; margin-left: 7px"
-                  >Female</label
-                >
-              </div>
-
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label style="margin-right: 10px" for="disabled"
                   >Disabled</label
                 >
@@ -110,12 +98,12 @@
                 >
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="dob">Date Of Birth</label>
                 <input type="date" class="form-control" formControlName="dob" />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="email">Email</label>
                 <input
                   type="email"
@@ -124,16 +112,17 @@
                 />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="contact">Contact Number</label>
                 <input
                   type="number"
                   class="form-control"
                   formControlName="contactNo"
+                  pattern="[0-9]{10}"
                 />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="contact">Aadhar Number</label>
                 <input
                   type="number"
@@ -142,7 +131,7 @@
                 />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label for="pan">Pan Number</label>
                 <input
                   type="text"
@@ -151,7 +140,7 @@
                 />
               </div>
 
-              <div class="form-group my-2">
+              <div class="form-group my-3">
                 <label style="margin-right: 10px" for="jobStatus"
                   >Job Status</label
                 >
@@ -279,22 +268,26 @@
                 />
               </div>
             </div>
-            <div class="card-footer text-center">
+            <div class="card-footer text-center bg-dark text-light">
               <button
                 type="submit"
-                class="btn btn-outline-dark"
+                class="btn btn-light"
                 [disabled]="!stepRegForm.valid"
               >
                 Register
               </button>
               <div class="m-3 alert alert-danger" *ngIf="isError">
+                <i class="bi bi-exclamation-triangle-fill text-danger"></i>
                 {{ errorMessage }}
               </div>
-              <div class="m-3 alert alert-danger" *ngIf="isError">
-                <p>Registered Successfully</p>
+              <div
+                class="m-3 alert alert-success text-center"
+                *ngIf="isSuccess"
+              >
+                <p>{{ successMsg }}</p>
               </div>
               <hr />
-              <button class="btn btn-outline-primary" (click)="toggle(true)">
+              <button class="btn btn-dark bg-green" (click)="toggle(true)">
                 Login Here
               </button>
             </div>

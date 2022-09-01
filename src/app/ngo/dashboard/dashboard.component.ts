@@ -1,9 +1,10 @@
 import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { NavigationExtras, Route, Router } from '@angular/router';
 import { Course } from 'src/app/model/Course';
 import { Hostel } from 'src/app/model/Hostel';
 import { Ngo } from 'src/app/model/Ngo';
+import { UserProfileDetails } from 'src/app/model/UserProfileDetails';
 import { NgoAuthService } from 'src/app/services/ngo-auth.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { NgoAuthService } from 'src/app/services/ngo-auth.service';
 })
 export class DashboardComponent implements OnInit {
   hostels: Array<Hostel>;
+
   name: string = '';
   constructor(private router: Router, private ngoAuth: NgoAuthService) {
     this.ngo = new Ngo();
@@ -48,6 +50,12 @@ export class DashboardComponent implements OnInit {
       console.log(hostels);
 
       this.hostels = hostels;
+    });
+  }
+
+  viewParticipents(course: Course) {
+    this.router.navigate(['/ngo/course-trainees'], {
+      queryParams: { course: course.courseID, name: course.title },
     });
   }
 }

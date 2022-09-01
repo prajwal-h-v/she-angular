@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../model/Course';
+import { Enrollment } from '../model/Enrollment';
 import { Hostel } from '../model/Hostel';
 import { Ngo } from '../model/Ngo';
+import { UserProfileDetails } from '../model/UserProfileDetails';
 
 @Injectable({
   providedIn: 'root',
@@ -100,6 +102,12 @@ export class NgoAuthService {
     return this.httpClient.get<Hostel[]>(
       'http://localhost:5001/accommodation/get-accommodation-by-ngo-pending/' +
         this.getLocalNgo().ngoId
+    );
+  }
+
+  getUsersForCourse(cId: number) {
+    return this.httpClient.get<UserProfileDetails[]>(
+      'http://localhost:5001/course/list-enrollments-for-course/' + cId
     );
   }
 }

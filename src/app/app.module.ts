@@ -46,9 +46,12 @@ import { MatDatepickerInput } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { AdminUserCenterComponent } from './admin/admin-user-center/admin-user-center.component';
+import { CourseTraineesComponent } from './ngo/course-trainees/course-trainees.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +82,8 @@ import { MatDividerModule } from '@angular/material/divider';
     AddFamilyDetailsComponent,
     UpdateUserDetailsComponent,
     UpdateUserPasswordComponent,
+    AdminUserCenterComponent,
+    CourseTraineesComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +107,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatChipsModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

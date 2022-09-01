@@ -29,10 +29,10 @@ export class StepLoginComponent implements OnInit {
       firstName: new FormControl('', Validators.required),
       middleName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      gender: new FormControl('', Validators.required),
+
       disabled: new FormControl('', Validators.required),
       dob: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       contactNo: new FormControl('', Validators.required),
       aadharNo: new FormControl('', Validators.required),
       panNo: new FormControl('', Validators.required),
@@ -52,12 +52,26 @@ export class StepLoginComponent implements OnInit {
     this.userService.loginUser(loginData).subscribe((data) => {
       console.log(JSON.stringify(data));
       if (data !== null) {
-        this.userService.setLocalUserDetails(data);
-        this.router.navigate(['/step/stepdashboard']);
-        this.isError = false;
+        if (!data.verified) {
+          this.isError = true;
+          this.errorMessage =
+            'Your account is not activated. Please try later.';
+          setTimeout(() => {
+            this.isError = false;
+            this.errorMessage = '';
+          }, 5000);
+        } else {
+          this.userService.setLocalUserDetails(data);
+          this.router.navigate(['/step/stepdashboard']);
+          this.isError = false;
+        }
       } else {
         this.isError = true;
         this.errorMessage = 'Invalid Credentials.!';
+        setTimeout(() => {
+          this.isError = false;
+          this.errorMessage = '';
+        }, 5000);
       }
     });
   }
@@ -77,8 +91,12 @@ export class StepLoginComponent implements OnInit {
       this.isSuccess = true;
       this.successMsg =
         'Registered succesfully. Please use ' +
-        data.userId +
+        data +
         ' and your password to login';
+      setTimeout(() => {
+        this.isSuccess = false;
+        this.successMsg = '';
+      }, 5000);
     });
   }
 

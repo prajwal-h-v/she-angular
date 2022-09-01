@@ -148,9 +148,30 @@ export class UserService {
     );
   }
 
-  getAccomDetails(userId: number): Observable<Hostel[]> {
-    return this.httpClient.get<Hostel[]>(
+  getAccomDetails(userId: number): Observable<Hostel> {
+    return this.httpClient.get<Hostel>(
       'http://localhost:5001/users/list-accommodation-by-user/' + userId
+    );
+  }
+
+  getPendingUsers() {
+    return this.httpClient.get<UserProfileDetails[]>(
+      'http://localhost:5001/admin/get-pending-users'
+    );
+  }
+  acceptUser(user: UserProfileDetails) {
+    console.log(user);
+
+    return this.httpClient.put<boolean>(
+      'http://localhost:5001/admin/accept-user',
+      user.userId
+    );
+  }
+
+  rejectUser(user: UserProfileDetails) {
+    return this.httpClient.post<Hostel>(
+      'http://localhost:5001/admin/delete-user',
+      user.userId
     );
   }
 }

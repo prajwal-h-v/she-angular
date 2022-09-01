@@ -4,10 +4,10 @@
     <div class="col-lg-6">
       <div class="card my-2">
         <form [formGroup]="newAccommodationForm" (ngSubmit)="requestSubmit()">
-          <div class="card-header bg-secondary bg-gradient text-light">
+          <div class="card-header bg-green bg-gradient text-light">
             <h4 class="my-1">Add New Hostel</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body bg-green-light">
             <div class="row">
               <div class="col-lg-8">
                 <div class="form-group my-3">
@@ -117,7 +117,7 @@
               </div>
             </div>
           </div>
-          <div class="card-footer bg-secondary bg-gradient text-center">
+          <div class="card-footer bg-green bg-gradient text-center">
             <button
               class="btn btn-outline-light"
               type="submit"
@@ -125,7 +125,10 @@
             >
               Add
             </button>
-            <div class="alert alert-success my-3" *ngIf="isAddSuccess">
+            <div
+              class="alert alert-success bg-green-light my-3"
+              *ngIf="isAddSuccess"
+            >
               {{ addMessage }}
             </div>
           </div>

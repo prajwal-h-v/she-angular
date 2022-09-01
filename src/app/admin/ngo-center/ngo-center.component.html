@@ -8,14 +8,17 @@
       <div class="alert alert-dark text-center">
         <h3 class="m-0">NGO Account Verification</h3>
       </div>
-      <div class="alert alert-success text-center" *ngIf="ngoList.length === 0">
+      <div
+        class="alert alert-success bg-green-light text-center"
+        *ngIf="ngoList.length === 0"
+      >
         <h3 class="m-1">No Pending Requests</h3>
       </div>
       <div class="card m-2" *ngFor="let ngo of ngoList; let i = index">
-        <div class="card-header bg-dark text-white text-center">
+        <div class="card-header bg-dark text-light text-center">
           {{ ngo.name }}, {{ ngo.address }}
         </div>
-        <div class="card-body">
+        <div class="card-body bg-green-light text-dark">
           <p>{{ ngo.description }}</p>
           <p>{{ ngo.email }}</p>
           <p>{{ ngo.contact }}</p>
@@ -39,18 +42,18 @@
         <h3 class="m-0">Course Approval</h3>
       </div>
       <div
-        class="alert alert-success text-center"
+        class="alert alert-success bg-green-light text-center"
         *ngIf="courseList.length === 0"
       >
         <h3 class="m-1">No Pending Requests</h3>
       </div>
       <div class="card m-2" *ngFor="let course of courseList">
-        <div class="card-header bg-dark text-white text-center">
+        <div class="card-header bg-dark text-light bg-gradient text-center">
           <h3 class="m-0-text-center">
             {{ course.title }}
           </h3>
         </div>
-        <div class="card-body bg-dark text-light">
+        <div class="card-body bg-green-light text-dark">
           <div class="row">
             <div class="col-sm-12">
               <p>{{ course.description }}</p>
@@ -87,7 +90,7 @@
         <h3 class="m-0">Hostel Approval</h3>
       </div>
       <div
-        class="alert alert-success text-center"
+        class="alert alert-success bg-green-light text-center"
         *ngIf="hostelList.length === 0"
       >
         <h3 class="m-1">No Pending Requests</h3>
@@ -96,7 +99,7 @@
         <div class="card-header bg-dark bg-gradient text-white text-center">
           <h3 class="m-2">{{ hostel.name }}</h3>
         </div>
-        <div class="card-body bg-dark text-light">
+        <div class="card-body bg-green-light text-dark">
           <div class="row">
             <div class="col-lg-6">
               <p>

@@ -4,10 +4,10 @@
     <div class="col-lg-6">
       <div class="card my-2">
         <form class="form" (ngSubmit)="createCourse()" [formGroup]="courseForm">
-          <div class="card-header bg-secondary text-light bg-gradient">
+          <div class="card-header bg-green text-light bg-gradient">
             <h4 class="my-1">Create New Course</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body bg-green-light">
             <div class="row">
               <div class="col-6">
                 <div class="form-group my-2">
@@ -94,7 +94,7 @@
               </div>
             </div>
           </div>
-          <div class="card-footer ng-gradient bg-secondary text-center">
+          <div class="card-footer ng-gradient bg-green text-center">
             <button
               class="btn btn-outline-light"
               type="submit"
@@ -107,11 +107,13 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <div class="alert alert-success bg-gradient text-center">
-        <h2>Current Courses</h2>
+      <div class="alert alert-success bg-gradient bg-green-light text-center">
+        <h2>
+          {{ courses.length > 0 ? "" : "No" }} Courses Pending for Approval
+        </h2>
       </div>
       <div class="card my-3" *ngFor="let c of courses; let i = index">
-        <div class="card-header bg-success bg-gradient">
+        <div class="card-header bg-green bg-gradient">
           <div class="row">
             <div class="col-8 text-center">
               <h2 class="card-title text-light m-0">

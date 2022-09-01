@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row mt-3 px-5">
     <div class="card p-0">
-      <div class="card-header bg-secondary bg-gradient text-white">
+      <div class="card-header bg-green bg-gradient text-white">
         <h3 class="card-title m-0">
           {{ ngo.name }}
           <span
@@ -45,11 +45,11 @@
     </div>
     <div class="row mt-3 p-3">
       <div class="col-lg-6">
-        <div class="alert alert-success bg-gradient text-center">
+        <div class="alert alert-success bg-gradient bg-green-light text-center">
           <h2>Current Courses</h2>
         </div>
         <div class="card my-2" *ngFor="let c of courses; let i = index">
-          <div class="card-header bg-success bg-gradient">
+          <div class="card-header bg-green bg-gradient">
             <div class="row">
               <div class="col-lg-8 py-2 text-center">
                 <h2 class="card-title text-light m-0">
@@ -57,11 +57,16 @@
                 </h2>
               </div>
               <div class="col-lg-4 py-2 text-center">
-                <button class="btn btn-outline-light">View Trainees</button>
+                <button
+                  class="btn btn-outline-light"
+                  (click)="viewParticipents(c)"
+                >
+                  View Trainees
+                </button>
               </div>
             </div>
           </div>
-          <div class="card-body">
+          <div class="card-body bg-green-light bg-gradi">
             <div class="row">
               <div class="col-sm-7">
                 <label for=""> <strong> About course</strong></label>
@@ -97,15 +102,12 @@
         <div class="card my-2" *ngFor="let hostel of hostels">
           <div class="card-header bg-danger bg-gradient text-light">
             <div class="row">
-              <div class="col-sm-8 text-center">
+              <div class="col-sm-12 text-center">
                 <h2 class="card-title text-light m-0">{{ hostel.name }}</h2>
-              </div>
-              <div class="col-sm-4 py-2 text-center">
-                <button class="btn btn-outline-light">View Residents</button>
               </div>
             </div>
           </div>
-          <div class="card-body">
+          <div class="card-body bg-danger-light text-dark">
             <div class="row">
               <div class="col-sm-6">
                 <p class="card-text">Rooms : {{ hostel.totalRooms }}</p>
