@@ -68,7 +68,9 @@ export class NgoAuthService {
   getCourseCount() {
     return this.httpClient.get<Course[]>(
       'http://localhost:5001/course/list-course-by-ngo/' +
-        this.getLocalNgo().ngoId
+        this.getLocalNgo().ngoId +
+        '/' +
+        true
     );
   }
 

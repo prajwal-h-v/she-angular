@@ -1,0 +1,129 @@
+<app-admin-navbar [currentTab]="'ngo-center'"></app-admin-navbar>
+<div class="container-fluid">
+  <div class="row my-2">
+    <div class="alert alert-danger text-center" *ngIf="isError">
+      <h2 class="m-1">{{ erMsg }}</h2>
+    </div>
+    <div class="col-lg-4">
+      <div class="alert alert-dark text-center">
+        <h3 class="m-0">NGO Account Verification</h3>
+      </div>
+      <div class="alert alert-success text-center" *ngIf="ngoList.length === 0">
+        <h3 class="m-1">No Pending Requests</h3>
+      </div>
+      <div class="card m-2" *ngFor="let ngo of ngoList; let i = index">
+        <div class="card-header bg-dark text-white text-center">
+          {{ ngo.name }}, {{ ngo.address }}
+        </div>
+        <div class="card-body">
+          <p>{{ ngo.description }}</p>
+          <p>{{ ngo.email }}</p>
+          <p>{{ ngo.contact }}</p>
+        </div>
+        <div class="card-footer bg-dark bg-gradient text-center">
+          <button class="btn btn-success mx-2" (click)="acceptNgo(ngo)">
+            <i class="bi bi-check-circle"></i>
+            Verify
+          </button>
+          <button class="btn btn-danger mx-2" (click)="rejectNgo(ngo)">
+            <i class="bi bi-x-circle"></i> Decline
+          </button>
+          <div class="alert alert-danger" *ngIf="isError">
+            {{ erMsg }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="alert alert-dark text-center">
+        <h3 class="m-0">Course Approval</h3>
+      </div>
+      <div
+        class="alert alert-success text-center"
+        *ngIf="courseList.length === 0"
+      >
+        <h3 class="m-1">No Pending Requests</h3>
+      </div>
+      <div class="card m-2" *ngFor="let course of courseList">
+        <div class="card-header bg-dark text-white text-center">
+          <h3 class="m-0-text-center">
+            {{ course.title }}
+          </h3>
+        </div>
+        <div class="card-body bg-dark text-light">
+          <div class="row">
+            <div class="col-sm-12">
+              <p>{{ course.description }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <p>Duration : {{ course.durationMonth }} Months</p>
+              <p>Location : {{ course.location }}</p>
+            </div>
+            <div class="col-lg-6">
+              <p>Offered By : {{ course.ngo.name }}</p>
+              <p>Starts on : {{ course.startDate }}</p>
+            </div>
+          </div>
+          <p></p>
+        </div>
+        <div class="card-footer bg-dark bg-gradient text-center">
+          <button class="btn btn-success mx-2" (click)="acceptCourse(course)">
+            <i class="bi bi-check-circle"></i>
+            Approve
+          </button>
+          <button class="btn btn-danger mx-2" (click)="rejectCourse(course)">
+            <i class="bi bi-x-circle"></i> Decline
+          </button>
+          <div class="alert alert-danger" *ngIf="isError">
+            {{ erMsg }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="alert alert-dark text-center">
+        <h3 class="m-0">Hostel Approval</h3>
+      </div>
+      <div
+        class="alert alert-success text-center"
+        *ngIf="hostelList.length === 0"
+      >
+        <h3 class="m-1">No Pending Requests</h3>
+      </div>
+      <div class="card m-2" *ngFor="let hostel of hostelList">
+        <div class="card-header bg-dark bg-gradient text-white text-center">
+          <h3 class="m-2">{{ hostel.name }}</h3>
+        </div>
+        <div class="card-body bg-dark text-light">
+          <div class="row">
+            <div class="col-lg-6">
+              <p>
+                {{ hostel.addressLane1 }}, {{ hostel.addressLane2 }},
+                {{ hostel.city }}, {{ hostel.state }}
+              </p>
+              <p>Managed By : {{ hostel.ngo.name }}</p>
+            </div>
+            <div class="col-lg-6">
+              <p>Total Rooms : {{ hostel.totalRooms }}</p>
+              <p>Capacity : {{ hostel.capacity }}</p>
+              <p *ngIf="hostel.dayCareCenter">Day Care Center : Yes</p>
+              <p *ngIf="!hostel.dayCareCenter">Day Care Center : No</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer bg-dark bg-gradient text-center">
+          <button class="btn btn-success mx-2" (click)="acceptHostel(hostel)">
+            <i class="bi bi-check-circle"></i>
+            Approve
+          </button>
+          <button class="btn btn-danger mx-2" (click)="rejectHostel(hostel)">
+            <i class="bi bi-x-circle"></i> Decline
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

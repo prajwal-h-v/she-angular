@@ -19,6 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgoStatusComponent } from './ngo/status/status.component';
 import { UnderContructionComponent } from './shared/under-contruction/under-contruction.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import { NgoCenterComponent } from './admin/ngo-center/ngo-center.component';
+import { StepDashboardComponent } from './step/step-dashboard/step-dashboard.component';
+import { StepNavbarComponent } from './step/step-navbar/step-navbar.component';
+import { StepCoursesComponent } from './step/step-courses/step-courses.component';
+import { StepAccomodationComponent } from './step/step-accomodation/step-accomodation.component';
+import { StepProfileComponent } from './step/step-profile/step-profile.component';
+import { StepSukanyaComponent } from './step/step-sukanya/step-sukanya.component';
+import { StepRegisterComponent } from './step/step-register/step-register.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +46,24 @@ import { UnderContructionComponent } from './shared/under-contruction/under-cont
     NgoNavbarComponent,
     NgoStatusComponent,
     UnderContructionComponent,
+    AdminDashboardComponent,
+    AdminNavbarComponent,
+    NgoCenterComponent,
+    StepDashboardComponent,
+    StepNavbarComponent,
+    StepCoursesComponent,
+    StepAccomodationComponent,
+    StepProfileComponent,
+    StepSukanyaComponent,
+
+    StepRegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
