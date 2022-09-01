@@ -60,7 +60,8 @@ export class StepCoursesComponent implements OnInit {
   }
 
   isEnroll(course: Course) {
-    // console.log(id);
-    console.log(this.courses.indexOf(course));
+    return (
+      this.userCourses.filter((e) => e.courseID === course.courseID).length > 0
+    );
   }
 }

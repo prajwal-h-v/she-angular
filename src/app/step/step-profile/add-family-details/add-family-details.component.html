@@ -1,0 +1,346 @@
+<div class="family-datails-container col-12">
+  <div class="family-members col-2">
+    <div class="family-member">
+      <button mat-raised-button color="primary" (click)="toAddMember()">
+        Add Member
+      </button>
+    </div>
+    <div class="family-member" *ngFor="let member of familyMembers">
+      <button mat-raised-button (click)="toUpdateMember(member)">
+        {{ member.firstName }}
+      </button>
+    </div>
+  </div>
+
+  <mat-divider [vertical]="true" class="divider-spacing"></mat-divider>
+
+  <div class="member-details col-10" [ngSwitch]="familyState">
+    <form
+      *ngSwitchCase="'addMember'"
+      (ngSubmit)="addFamilyMember()"
+      #addFamilyMemberForm="ngForm"
+      class="form-style"
+    >
+      <span class="fields-row col-12">
+        <div class="col-4 px-1">
+          <div>
+            <mat-label>First Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="firstName"
+                [(ngModel)]="familyMember.firstName"
+                #fname="ngModel"
+                required
+                minlength="2"
+                placeholder="First name"
+              />
+              <mat-error *ngIf="fname.invalid">At least 2 charactes</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-4 px-1">
+          <div>
+            <mat-label>Middle Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="middleName"
+                [(ngModel)]="familyMember.middleName"
+                placeholder="Middle name"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-4 px-1">
+          <div>
+            <mat-label>Last Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="lastName"
+                [(ngModel)]="familyMember.lastName"
+                #lname="ngModel"
+                required
+                minlength="2"
+                placeholder="Last Name"
+              />
+              <mat-error *ngIf="lname.invalid">At least 2 charactes</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </span>
+
+      <span class="fields-row col-12">
+        <div class="col-6 px-3">
+          <div>
+            <span class="radio-btn-group">
+              <label id="example-radio-group-label">Gender: </label>
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="radio-btn-group"
+                name="gender"
+                [(ngModel)]="familyMember.gender"
+                #gender="ngModel"
+                required
+              >
+                <mat-radio-button [value]="'MALE'"> Male </mat-radio-button>
+                <mat-radio-button [value]="'FEMALE'"> Female </mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="gender.invalid">Gender Required</mat-error>
+            </span>
+          </div>
+        </div>
+
+        <span class="form-field-space"></span>
+
+        <div class="col-6 px-3">
+          <div>
+            <mat-label>Date of Birth</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                [matDatepicker]="picker"
+                name="dob"
+                [(ngModel)]="familyMember.dob"
+                #dob="ngModel"
+                required
+                placeholder="Date of Birth"
+              />
+              <mat-error *ngIf="dob.invalid">Required</mat-error>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matPrefix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </span>
+
+      <span class="fields-row">
+        <div class="col-6 px-3">
+          <div>
+            <mat-label>AADHAAR Number</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="aadhaarNo"
+                minlength="12"
+                maxlength="12"
+                required
+                [(ngModel)]="familyMember.aadhaarNo"
+                #aadhaarNo="ngModel"
+                placeholder="Aadhar Number"
+              />
+              <mat-error *ngIf="aadhaarNo.invalid"
+                >12 Digits. Required</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+
+        <span class="form-field-space"></span>
+
+        <div class="col-6 px-3">
+          <div>
+            <mat-label>Relation</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-select
+                name="relation"
+                [(ngModel)]="familyMember.relation"
+                #relation="ngModel"
+                required
+                placeholder="Relation"
+              >
+                <mat-option
+                  *ngFor="let relation of relations"
+                  [value]="relation.value"
+                >
+                  {{ relation.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="relation.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </span>
+
+      <button
+        type="submit"
+        class="update-detail-button"
+        mat-raised-button
+        color="primary"
+        [disabled]="addFamilyMemberForm.invalid"
+      >
+        Add
+      </button>
+    </form>
+
+    <form
+      *ngSwitchCase="'updateMember'"
+      #addFamilyMemberForm="ngForm"
+      (ngSubmit)="addFamilyMember()"
+      class="form-style"
+    >
+      <span class="fields-row col-12">
+        <div class="col-4 px-3">
+          <div>
+            <mat-label>First Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="firstName"
+                [(ngModel)]="familyMember.firstName"
+                #fname="ngModel"
+                required
+                minlength="2"
+                placeholder="First Name"
+              />
+            </mat-form-field>
+            <mat-error *ngIf="fname.invalid">At least 2 charactes</mat-error>
+          </div>
+        </div>
+
+        <div class="col-4 px-3">
+          <div>
+            <mat-label>Middle Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="middleName"
+                [(ngModel)]="familyMember.middleName"
+                placeholder="Middle Name"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-4 px-3">
+          <div>
+            <mat-label>Last Name</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="lastName"
+                [(ngModel)]="familyMember.lastName"
+                #lname="ngModel"
+                required
+                minlength="2"
+                placeholder="Last Name"
+              />
+              <mat-error *ngIf="lname.invalid">At least 2 charactes</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </span>
+
+      <span class="fields-row col-12">
+        <div class="col-6 px-3">
+          <div>
+            <span class="radio-btn-group">
+              <label id="example-radio-group-label">Gender: </label>
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="radio-btn-group"
+                name="gender"
+                [(ngModel)]="familyMember.gender"
+                #gender="ngModel"
+                required
+              >
+                <mat-radio-button [value]="'MALE'"> Male </mat-radio-button>
+                <mat-radio-button [value]="'FEMALE'"> Female </mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="gender.invalid">Required</mat-error>
+            </span>
+          </div>
+        </div>
+
+        <span class="form-field-space"></span>
+
+        <div class="col-6 px-3">
+          <div>
+            <mat-label>Date of Birth</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                [matDatepicker]="picker"
+                name="dob"
+                [(ngModel)]="familyMember.dob"
+                #dob="ngModel"
+                required
+                placeholder="Date Of Birth"
+              />
+              <mat-error *ngIf="dob.invalid">Required</mat-error>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matPrefix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </span>
+
+      <span class="fields-row col-12">
+        <div class="col-6 px-3">
+          <div>
+            <mat-label>AADHAAR Number</mat-label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                name="aadhaarNo"
+                [(ngModel)]="familyMember.aadhaarNo"
+                #aadhaarNo="ngModel"
+                minlength="12"
+                maxlength="12"
+                required
+                placeholder="Aadhar Number"
+              />
+              <mat-error *ngIf="aadhaarNo.invalid"
+                >12 Digits. Required</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+
+        <span class="form-field-space"></span>
+
+        <div class="col-6 px-3">
+          <div>
+            <mat-label>Relation</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-select
+                name="relation"
+                [(ngModel)]="familyMember.relation"
+                #relation="ngModel"
+                required
+                placeholder="Relation"
+              >
+                <mat-option
+                  *ngFor="let relation of relations"
+                  [value]="relation.value"
+                >
+                  {{ relation.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="relation.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </span>
+
+      <button
+        type="submit"
+        class="update-detail-button"
+        mat-raised-button
+        color="primary"
+        [disabled]="addFamilyMemberForm.invalid"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>
