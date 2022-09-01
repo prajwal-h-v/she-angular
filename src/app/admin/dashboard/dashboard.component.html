@@ -1,0 +1,70 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"> 
+<app-admin-navbar [currentTab]="'dashboard'"></app-admin-navbar> 
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">NGO</h5>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let c of ngoad; let i = index">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ c.name }}</h5>
+                <small>{{ c.ngoId }}</small>
+              </div>
+              <p class="mb-1">{{ c.description }}</p>
+              <div class="bttn">
+              <button class="btn btn-danger float-right"
+              (click)="rejectRequest(i)">
+              <i class="bi bi-trash3-fill"></i>
+              Accept
+            </button>
+            <button class="btn btn-danger float-right"
+              (click)="acceptRequest(i)">
+              <i class="bi bi-trash3-fill"></i>
+              Reject
+            </button>
+          </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Users</h5>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let c of userad; let i = index">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+              </div>
+              <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
+              <button
+              class="btn btn-danger float-right"
+              (click)="deleteCourse(i)"
+            >
+              <i class="bi bi-trash3-fill"></i>
+              Accept
+            </button>
+            <button
+              class="btn btn-danger float-right"
+              (click)="deleteCourse(i)"
+            >
+              <i class="bi bi-trash3-fill"></i>
+              Reject
+            </button>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    

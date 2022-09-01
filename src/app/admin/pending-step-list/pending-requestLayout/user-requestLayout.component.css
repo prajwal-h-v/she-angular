@@ -1,0 +1,42 @@
+h2{
+	background-color: blue;
+	padding: 20px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+}
+description{
+	padding: 20px;
+}
+p{
+padding-left: 20px
+}
+.pendingBlock{
+	background-color: rgba(172, 193, 242, 0.41);
+    height: 400px;
+    width: 400px;
+    border-radius: 40px;
+}
+
+.button{
+padding: 15px;
+padding-left: 8px;
+}
+
+.button1{
+	padding: 10px;
+    color: white;
+	background-color: rgb(10, 158, 67);
+    width: 80px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+}
+.button2{
+	padding: 10px;
+    color: white;
+	background-color: rgb(153, 20, 30);
+    width: 80px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+}

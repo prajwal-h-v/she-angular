@@ -1,0 +1,151 @@
+<app-ngo-navbar [currentTab]="'new-course'"></app-ngo-navbar>
+<div class="row p-2 my-4">
+  <div class="col-6">
+    <form class="form" (ngSubmit)="createCourse()" [formGroup]="courseForm">
+      <div class="card">
+        <div class="card-header">New Course</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group my-2">
+                <label for="course-title">Course Title</label
+                ><input
+                  type="text"
+                  class="form-control"
+                  name="course-title"
+                  formControlName="courseTitle"
+                />
+              </div>
+              <div class="form-group my-2">
+                <label for="course-desc">Description</label
+                ><textarea
+                  rows="5"
+                  type="text"
+                  class="form-control"
+                  name="course-desc"
+                  formControlName="courseDescription"
+                ></textarea>
+              </div>
+
+              <div class="form-group my-2">
+                <label for="">Start Date</label
+                ><input
+                  type="date"
+                  name="start-date"
+                  class="form-control"
+                  formControlName="courseStart"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group my-2">
+                <label for=""
+                  >Duration
+                  <span class="text-warning"> (in months)</span></label
+                ><input
+                  type="number"
+                  min="1"
+                  max="12"
+                  name="duration"
+                  class="form-control"
+                  formControlName="courseDuration"
+                />
+              </div>
+              <div class="form-group my-2">
+                <label for="">Offers Job? &nbsp;</label>
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    value="yes"
+                    name="courseJobs"
+                    id="job"
+                    formControlName="courseJobs"
+                  /><label class="form-check-label" for="job"> Yes </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="courseJobs"
+                    id="job"
+                    formControlName="courseJobs"
+                    value="no"
+                  /><label class="form-check-label" for="job"> No </label>
+                </div>
+              </div>
+              <div class="form-group my-2">
+                <label for="">Vacancies</label>
+                <input
+                  type="number"
+                  name="vacancy"
+                  class="form-control"
+                  id=""
+                  min="1"
+                  max="1000"
+                  formControlName="courseVacnacy"
+                />
+              </div>
+              <div class="form-group my-2">
+                <label for="mode">Mode</label>
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    name="courseMode"
+                    id="mode-on"
+                    value="online"
+                    class="form-check-input"
+                    formControlName="courseMode"
+                  />
+                  <label for="mode-on" class="form-check-label">Online</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    name="courseMode"
+                    id="mode-off"
+                    value="offline"
+                    class="form-check-input"
+                    formControlName="courseMode"
+                  />
+                  <label for="mode-off" class="form-check-label">Offline</label>
+                </div>
+              </div>
+              <div class="form-group" *ngIf="course.mode === 'offline'">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  name="location"
+                  id="location"
+                  formControlName="courseLocation"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-6" *ngFor="let c of courses">
+    <div class="card" *ngIf="c.title.length > 0">
+      <div class="card-header">
+        <h2 class="card-title">{{ c.title }}</h2>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ c.description }}</p>
+        <p class="card-text">{{ c.startDate }}</p>
+        <p class="card-text">{{ c.duration }}</p>
+        <p class="card-text">{{ c.isJob }}</p>
+        <p class="card-text">{{ c.vacancy }}</p>
+        <p class="card-text">{{ c.mode }}</p>
+        <p class="card-text" *ngIf="c.mode === 'offline'">
+          {{ c.location }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
