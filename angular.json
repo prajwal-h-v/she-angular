@@ -95,5 +95,8 @@
       }
     }
   },
-  "defaultProject": "SHE-fontend"
+  "defaultProject": "SHE-fontend",
+  "cli": {
+    "analytics": "675575f3-6a8e-4cb1-9ce1-3c1c0fe85d58"
+  }
 }

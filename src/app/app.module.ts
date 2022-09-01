@@ -19,6 +19,7 @@ import { AccommodationComponent } from './ngo/accommodation/accommodation.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgoListComponent } from './admin/ngo-list/ngo-list.component';
+import { UserListComponent } from './admin/user-list/user-list.compoonent';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgoListComponent } from './admin/ngo-list/ngo-list.component';
     CoursesComponent,
     AccommodationComponent,
     NgoListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

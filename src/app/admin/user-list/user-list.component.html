@@ -1,29 +1,225 @@
-<!doctype html>
+<!--<ol>
+    <li>User 1
+        <dl>
+            <dt>Contact Details</dt>
+            <dd>Email:</dd>
+            <dd>Phone:</dd>
+        </dl>
+    </li>
+    <li>User 2
+        <dl>
+            <dt>Contact Details</dt>
+            <dd>Email:</dd>
+            <dd>Phone:</dd>
+        </dl>
+    </li>
+    <li>User 3
+        <dl>
+            <dt>Contact Details</dt>
+            <dd>Email:</dd>
+            <dd>Phone:</dd>
+        </dl>
+    </li>
+</ol>
 
-<head>
-    <title> USERS</title>
-    <link rel="stylesheet" href="user-list.component.css">
-    <ol>
-        <li>User 1
-            <dl>
-                <dt>Contact Details</dt>
-                <dd>Email:</dd>
-                <dd>Phone:</dd>
-            </dl>
-        </li>
-        <li>User 2
-            <dl>
-                <dt>Contact Details</dt>
-                <dd>Email:</dd>
-                <dd>Phone:</dd>
-            </dl>
-        </li>
-        <li>User 3
-            <dl>
-                <dt>Contact Details</dt>
-                <dd>Email:</dd>
-                <dd>Phone:</dd>
-            </dl>
-        </li>
-    </ol>
-</head>
+<app-navbar [currenttab]="user"></app-navbar>
+<div class="container content">
+    <div class="row my-5">
+        <div class="col-lg-6" *ngIf="isLogin">
+            <div class="card m-3">
+                <form [formGroup]="userLoginForm" (ngSubmit)="requestLogin()">
+                    <div class="card-header bg-success bg-gradient text-light">
+                        <h4 class="my-1">USER Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="user-id">USER ID</label>
+                            <input type="number" autocomplete="username" class="form-control" formControlName="userID" />
+                        </div>
+                        <div class="form-group">
+                            <label for="user-pwd">Password</label>
+                            <input type="password" autocomplete="new-password" class="form-control" formControlName="userPassword" />
+                        </div>
+                    </div>
+                    <div class="card-footer bg-success bg-gradient text-center">
+                        <button class="btn btn-outline-light" type="submit" [disabled]="!userLoginForm.valid">
+              Login
+            </button>
+                        <hr />
+                        <button class="btn btn-dark" (click)="toggle(false)">
+              New here? Chick here to Register
+            </button>
+                        <div class="m-3 alert alert-danger" *ngIf="isError">
+                            <i class="bi bi-exclamation-triangle-fill text-danger"></i> {{ errorMessage }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-6" *ngIf="!isLogin">
+            <div class="card m-3">
+                <form [formGroup]="userRegisterForm" (ngSubmit)="requestRegisterNgo()">
+                    <div class="card-header bg-dark bg-gradient text-light">
+                        <h5>USER Register</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="user-name">USER Name</label>
+                            <input type="text" class="form-control" formControlName="userName" />
+                        </div>
+                        <div class="form-group">
+                            <label for="user-enail">USER Email</label>
+                            <input type="email" class="form-control" formControlName="userEmail" />
+                        </div>
+                        <div class="form-group">
+                            <label for="user-pwd1">Password</label>
+                            <input type="password" autocomplete="new-password" class="form-control" formControlName="password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">Confirm Password</label>
+                            <input type="password" autocomplete="new-password" class="form-control" formControlName="confirmPassword" />
+                        </div>
+                        <!--
+            <div class="form-group">
+              <label for="user-desc">Descrive your NGO in brief</label>
+              <textarea
+                class="form-control"
+                rows="3"
+                formControlName="ngoDescription"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="ngo-enail">Where are you located?</label>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="ngoLocation"
+              />
+            </div>
+      >
+                        <div class="form-group">
+                            <label for="user-email">Contact <span class="text-warning">(phone)</span></label
+              >
+              <input
+                type="number"
+                class="form-control"
+                formControlName="userContact"
+              />
+            </div>
+          </div>
+          <div class="card-footer bg-dark bg-gradient text-center">
+            <button
+              type="submit"
+              class="btn btn-outline-light"
+              [disabled]="!userRegisterForm.valid"
+            >
+              Register
+            </button>
+            <div class="m-3 alert alert-danger" *ngIf="isError">
+              {{ errorMessage }}
+            </div>
+            <div class="m-3 alert alert-success" *ngIf="isSuccess">
+              {{ successMsg }}
+            </div>
+            <hr />
+            <button class="btn btn-success" (click)="toggle(true)">
+              Login Here
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="alert alert-dark bg-gradient text-center my-3">
+        <h2>Our Associations</h2>
+      </div>
+      <div class="card my-3" *ngFor="let n of ngos">
+        <div class="card-header bg-dark bg-gradient text-light">
+          {{ n.name }}, {{ n.address }}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ n.description }}</p>
+        </div>
+        <div class="card-footer bg-dark bg-gradient">
+          <div class="row text-center text-light">
+            <div class="col-lg-6">
+              <p class="card-text">
+                <i class="bi bi-envelope"></i> {{ n.email }}
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <p class="card-text">
+                <i class="bi bi-telephone"></i> {{ n.contact }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<app-admin-navbar [currentTab]="'user-list'"></app-admin-navbar>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">NGO</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let c of ngoad; let i = index">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ c.name }}</h5>
+                            <small>{{ c.ngoId }}</small>
+                        </div>
+                        <p class="mb-1">{{ c.description }}</p>
+                        <div class="bttn">
+                            <button class="btn btn-danger float-right" (click)="deleteUser(i)">
+              <i class="bi bi-trash3-fill"></i>
+              Accept
+            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Users</h5>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let c of userad; let i = index">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+              </div>
+              <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
+              <button
+              class="btn btn-danger float-right"
+              (click)="deleteCourse(i)"
+            >
+              <i class="bi bi-trash3-fill"></i>
+              Accept
+            </button>
+            <button
+              class="btn btn-danger float-right"
+              (click)="deleteCourse(i)"
+            >
+              <i class="bi bi-trash3-fill"></i>
+              Reject
+            </button>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  -->
+</div>

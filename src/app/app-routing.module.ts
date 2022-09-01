@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserListComponent } from './admin/user-list/user-list.compoonent';
 import { AccommodationComponent } from './ngo/accommodation/accommodation.component';
 import { AddAccommodationComponent } from './ngo/add-accommodation/add-accommodation.component';
 import { AddCourseComponent } from './ngo/add-course/add-course.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'ngo/new-accommodation', component: AddAccommodationComponent },
   { path: 'ngo/courses', component: CoursesComponent },
   { path: 'ngo/accommodation', component: AccommodationComponent },
+  { path : 'admin/user-list', component: UserListComponent}
 ];
 
 @NgModule({

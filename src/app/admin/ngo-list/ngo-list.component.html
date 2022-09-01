@@ -1,13 +1,30 @@
-<!DOCTYPE html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<head>
-    <title>NGO LIST</title>
-    <p>ngo-list works!</p>
-    <button type="button" class="collapsible">NGO 1</button>
-    <div class="content">These are thge details of NGO 1</div>
-    <link rel="stylesheet" href="ngo-list.component.css">
-    <button type="button" class="collapsible">NGO 2</button>
-    <div class="content">These are the details of NGO 2</div>
-    <button type="button" class="collapsible">NGO 3</button>
-    <div class="content">These are the detais of NGO 3</div>
-</head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<app-admin-navbar [currentTab]="'user-list'"></app-admin-navbar>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">NGO</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let c of ngoad; let i = index">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ c.name }}</h5>
+                            <small>{{ c.ngoId }}</small>
+                        </div>
+                        <p class="mb-1">{{ c.description }}</p>
+                        <div class="bttn">
+                            <button class="btn btn-danger float-right" (click)="deleteUser(i)">
+              <i class="bi bi-trash3-fill"></i>
+              Accept
+            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
