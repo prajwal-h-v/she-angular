@@ -2,8 +2,7 @@
 
 <div class="container">
     <div class="row justify-content-start">
-        <div class="col-lg-6">
-            <div *ngIf="isLogin">
+        <div class="col-lg-6" *ngIf="isLogin"> 
                 <div class="card m-3">
                     <form [formGroup]="stepLoginForm" (ngSubmit)="requestLoginStep()">
                         <div class="card-header">
@@ -30,12 +29,149 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> 
+        </div>  
+        
+        <div class="col-lg-6" *ngIf="!isLogin">
+            <div class="card">
+                <form [formGroup]="stepRegForm" (ngSubmit)="requestRegisterStep()">
+                    <div class="card-header">
+                        <h5>STEP Register</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" formControlName="firstName">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="middle_name">Middle Name</label>
+                            <input type="text" class="form-control" formControlName="middleName">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastName">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="margin-right: 10px;" for="gender">Gender</label>
+                            <input type="radio"  formControlName="gender" value="male">
+                            <label style="margin-right: 10px;" for="male">Male</label>
+                            <input type="radio" formControlName="gender" value="female">
+                            <label for="female">Female</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="margin-right: 10px;" for="disabled">Disabled</label>
+                            <input type="radio" formControlName="disabled" value="yes">
+                            <label style="margin-right: 10px;" for="yes">Yes</label>
+                            <input type="radio" formControlName="disabled" value="no">
+                            <label for="no">No</label>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="dob">Date Of Birth</label>
+                            <input type="date" class="form-control" formControlName="dob">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" formControlName="email"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="contact">Contact Number</label>
+                            <input type="number" class="form-control" formControlName="contact">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="contact">Aadhar Number</label>
+                            <input type="number" class="form-control" formControlName="aadharNo">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="pan">Pan Number</label>
+                            <input type="text" class="form-control" formControlName="panNo">
+                        </div>
+    
+                        <div class="form-group">
+                            <label style="margin-right: 10px;" for="jobstatus">Job Status</label>
+                            <input type="radio" formControlName="jobstatus" value="employed">
+                            <label style="margin-left: 10px; margin-right: 10px;" for="employed">Employed</label>
+                            <input type="radio" formControlName="jobstatus" value="unemployed">
+                            <label style="margin-left: 10px;" for="unemployed">UnEmployed</label>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="jobtitle">Job Title</label>
+                            <input type="text" class="form-control" formControlName="jobtitle">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="salary">Salary</label>
+                            <input type="number" class="form-control" formControlName="salary">
+                        </div>
+    
+                        <div class="form-group">
+                            <label style="margin-right: 10px;" for="residence">Type of Residence</label>
+                            <input type="radio" formControlName="residence" value="rural">
+                            <label style="margin-right: 10px;" for="rural">Rural</label>
+                            <input type="radio" formControlName="residence" value="urban">
+                            <label for="urban">Urban</label>
+                        </div>
+    
+                        <div class="form-group">
+                            <label style="margin-right: 10px;" for="maritalstatus">Job Status</label>
+                            <input type="radio" formControlName="maritalstatus" value="unmarried">
+                            <label style="margin-right: 10px;" for="unmarried">Unmarried</label>
+                            <input type="radio" formControlName="maritalstatus" value="married">
+                            <label style="margin-right: 10px;" for="married">Married</label>
+                            <input type="radio" formControlName="maritalstatus" value="widowed">
+                            <label style="margin-right: 10px;" for="widowed">Widowed</label>
+                            <input type="radio" formControlName="maritalstatus" value="separated">
+                            <label for="separated">Separated</label>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" formControlName="stepPwd">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" formControlName="stepConPwd">
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button
+                        type="submit"
+                        class="btn btn-outline-dark"
+                        [disabled]="!stepRegForm.valid"
+                        >
+                        Register
+                        </button>
+                        <div class="m-3 alert alert-danger" *ngIf="isSuccess">
+                            {{ successMsg }}
+                        </div>
+                        <div class="m-3 alert alert-danger" *ngIf="isError">
+                        {{ errorMessage }}
+                        </div>
+                        <div class="m-3 alert alert-danger" *ngIf="isError">
+                            <p>Registered Successfully</p>
+                        </div>
+                        <hr />
+                        <button class="btn btn-outline-primary" (click)="toggle(true)">
+                        Login Here
+                        </button>
+                    </div>
+                </form>
             </div> 
         </div> 
+        
         <div class="col-lg-6">  
             <div>
-                <h3 class="text-center">Support to training and employment programme for women</h3>
+                <h3 class="text-center bs-indigo">Support to training and employment programme for women</h3>
                 <p>STEP Scheme aims to provide skills that give employability to women and to provide competencies and skill that enable women to become self-employed/entrepreneurs. The Scheme is intended to benefit women who are in the age group of 16 years and above across the country.</p>
             
                 <h4>Scheme Benefits & Highlights</h4>
@@ -59,141 +195,7 @@
             </div>
         </div>
     </div> 
-    <div class="col order-first">
-        <div class="col-lg-6" *ngIf="!isLogin">
-        <div class="card">
-            <form [formGroup]="stepRegForm" (ngSubmit)="requestRegisterStep()">
-                <div class="card-header">
-                    <h5>STEP Register</h5>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" class="form-control" formControlName="firstName">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="middle_name">Middle Name</label>
-                        <input type="text" class="form-control" formControlName="middleName">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" class="form-control" formControlName="lastName">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label style="margin-right: 10px;" for="gender">Gender</label>
-                        <input type="radio"  formControlName="gender" value="male">
-                        <label style="margin-right: 10px;" for="male">Male</label>
-                        <input type="radio" formControlName="gender" value="female">
-                        <label for="female">Female</label>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label style="margin-right: 10px;" for="disabled">Disabled</label>
-                        <input type="radio" formControlName="disabled" value="yes">
-                        <label style="margin-right: 10px;" for="yes">Yes</label>
-                        <input type="radio" formControlName="disabled" value="no">
-                        <label for="no">No</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dob">Date Of Birth</label>
-                        <input type="date" class="form-control" formControlName="dob">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" formControlName="email"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contact">Contact Number</label>
-                        <input type="number" class="form-control" formControlName="contact">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contact">Aadhar Number</label>
-                        <input type="number" class="form-control" formControlName="aadharNo">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pan">Pan Number</label>
-                        <input type="text" class="form-control" formControlName="panNo">
-                    </div>
-
-                    <div class="form-group">
-                        <label style="margin-right: 10px;" for="jobstatus">Job Status</label>
-                        <input type="radio" formControlName="jobstatus" value="employed">
-                        <label style="margin-left: 10px; margin-right: 10px;" for="employed">Employed</label>
-                        <input type="radio" formControlName="jobstatus" value="unemployed">
-                        <label style="margin-left: 10px;" for="unemployed">UnEmployed</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="jobtitle">Job Title</label>
-                        <input type="text" class="form-control" formControlName="jobtitle">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="salary">Salary</label>
-                        <input type="number" class="form-control" formControlName="salary">
-                    </div>
-
-                    <div class="form-group">
-                        <label style="margin-right: 10px;" for="residence">Type of Residence</label>
-                        <input type="radio" formControlName="residence" value="rural">
-                        <label style="margin-right: 10px;" for="rural">Rural</label>
-                        <input type="radio" formControlName="residence" value="urban">
-                        <label for="urban">Urban</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="margin-right: 10px;" for="maritalstatus">Job Status</label>
-                        <input type="radio" formControlName="maritalstatus" value="unmarried">
-                        <label style="margin-right: 10px;" for="unmarried">Unmarried</label>
-                        <input type="radio" formControlName="maritalstatus" value="married">
-                        <label style="margin-right: 10px;" for="married">Married</label>
-                        <input type="radio" formControlName="maritalstatus" value="widowed">
-                        <label style="margin-right: 10px;" for="widowed">Widowed</label>
-                        <input type="radio" formControlName="maritalstatus" value="separated">
-                        <label for="separated">Separated</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" formControlName="stepPwd">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" class="form-control" formControlName="stepConPwd">
-                    </div>
-                </div>
-                <div class="card-footer text-center">
-                    <button
-                    type="submit"
-                    class="btn btn-outline-dark"
-                    [disabled]="!stepRegForm.valid"
-                    >
-                    Register
-                    </button>
-                    <div class="m-3 alert alert-danger" *ngIf="isError">
-                    {{ errorMessage }}
-                    </div>
-                    <div class="m-3 alert alert-danger" *ngIf="isError">
-                        <p>Registered Successfully</p>
-                    </div>
-                    <hr />
-                    <button class="btn btn-outline-primary" (click)="toggle(true)">
-                    Login Here
-                    </button>
-                </div>
-            </form>
-        </div>
-        </div> 
-    </div>   
+  
 </div>
     
 

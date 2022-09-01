@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'she/ngo-login', component: NgoLoginComponent },
   { path: 'she/step-login', component: StepLoginComponent },
   { path: 'she/admin-login', component: AdminLoginComponent },
+  { path: 'she/home', component: HomeComponent },
   { path: 'step/step-header', component: StepHeaderComponent},
   { path: 'step/step-home', component: StepHomeComponent},
   { path: 'ngo/dashboard', component: DashboardComponent },

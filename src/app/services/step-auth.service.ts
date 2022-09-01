@@ -21,6 +21,7 @@ export class StepAuthService {
 
     register(data: any) {
         let regData = {
+            stepId: data.stepId,
             firstName: data.firstName,
             middleName: data.middleName,
             lastName: data.lastName,

@@ -1,5 +1,6 @@
 export class STEP{
 
+    stepId: number;
     firstName: string;
     middleName: string;
     lastName: string;
@@ -19,6 +20,7 @@ export class STEP{
     stepConPwd: string;
 
   constructor() {
+    this.stepId = 0;
     this.firstName = '';
     this.middleName = '';
     this.lastName = '';

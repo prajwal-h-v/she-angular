@@ -32,7 +32,7 @@ export class StepLoginComponent implements OnInit {
       gender: new FormControl('', Validators.required),
       disabled: new FormControl('', Validators.required),
       dob: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       contact: new FormControl('', Validators.required),
       aadharNo: new FormControl('', Validators.required),
       panNo: new FormControl('', Validators.required),
@@ -50,9 +50,9 @@ export class StepLoginComponent implements OnInit {
     let loginData = this.stepLoginForm.getRawValue();
 
     this.stepAuth.login(loginData).subscribe((data: STEP) => {
-      // console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data));
       if (data !== null) {
-        //sessionStorage.setItem('activeNgo', JSON.stringify(data));
+        sessionStorage.setItem('activeUser', JSON.stringify(data));
         this.router.navigate(['/step/step-home']);
         this.isError = false;
       } else {
@@ -61,6 +61,9 @@ export class StepLoginComponent implements OnInit {
       }
     });
   }
+
+  isSuccess = false;
+  successMsg = '';
 
   requestRegisterStep(){
     let registerData = this.stepRegForm.getRawValue();
@@ -73,6 +76,11 @@ export class StepLoginComponent implements OnInit {
     this.stepAuth.register(registerData).subscribe((data) => {
       console.log(data);
       this.stepRegForm.reset();
+      this.isSuccess = true;
+      this.successMsg = 
+      'Registered succesfully. Please use ' +
+        data.stepId +
+      ' and your password to login';
     });
   }
 

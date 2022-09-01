@@ -44,6 +44,11 @@ export class RegisterComponent implements OnInit {
       this.errorMessage="Please Enter Valid Aadhar Number";
       return ;
     } 
+
+    if(this.sukanyaReg.dob.getFullYear!=this.minDate){
+      this.errorMessage="Child should be below 10 years";
+      return ;
+    }
     // if(this.sukanyaReg.aadharDoc===undefined){
     //   this.errorMessage="Please Uplaod Aadhar";
     //   return ;
