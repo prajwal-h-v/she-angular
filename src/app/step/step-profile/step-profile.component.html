@@ -1,0 +1,28 @@
+<app-step-navbar [currentTab]="'step-profile'"></app-step-navbar>
+
+<div class="body-container" [ngSwitch]="dashboardState">
+  <div class="profile-container" *ngSwitchCase="'profile'">
+    <mat-card class="profile-navigation">
+      <button mat-stroked-button color="primary" (click)="toUpdateDetails()">
+        Update Details
+      </button>
+      <button mat-stroked-button color="primary" (click)="toChangePassword()">
+        Change Password
+      </button>
+      <button mat-stroked-button color="primary" (click)="toFamilyDetails()">
+        Family Details
+      </button>
+    </mat-card>
+    <mat-card class="profile-body" [ngSwitch]="profileState">
+      <app-update-user-details
+        *ngSwitchCase="'details'"
+      ></app-update-user-details>
+
+      <app-update-user-password
+        *ngSwitchCase="'password'"
+      ></app-update-user-password>
+
+      <app-add-family-details *ngSwitchCase="'family'"></app-add-family-details>
+    </mat-card>
+  </div>
+</div>

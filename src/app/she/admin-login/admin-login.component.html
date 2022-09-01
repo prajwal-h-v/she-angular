@@ -1,0 +1,47 @@
+<app-navbar [currentTab]="'admin'"></app-navbar>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div class="card my-3 mx-auto sm-w-100">
+        <form [formGroup]="adminLoginForm" (ngSubmit)="requestLogin()">
+          <div class="card-header bg-success bg-gradient">
+            <h3 class="card-title text-light">Admin</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="ms-2 my-2">Admin ID</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="adminId"
+              />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                autocomplete="new-password"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+          </div>
+          <div class="card-footer bg-success bg-gradient">
+            <button
+              type="submit"
+              class="btn btn-outline-light"
+              [disabled]="!adminLoginForm.valid"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="alert alert-danger" *ngIf="isError">
+        {{ message }}
+      </div>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>

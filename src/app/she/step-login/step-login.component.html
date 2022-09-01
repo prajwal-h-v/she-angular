@@ -1,0 +1,488 @@
+<app-navbar [currentTab]="'step'"></app-navbar>
+
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-lg-6">
+      <div *ngIf="isLogin">
+        <div class="card m-3 mt-4">
+          <form [formGroup]="stepLoginForm" (ngSubmit)="requestLoginStep()">
+            <div class="card-header">
+              <h5>STEP Login</h5>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="step-id">STEP ID</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="userId"
+                />
+              </div>
+              <div class="form-group">
+                <label for="step-pwd">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <button
+                class="btn btn-dark"
+                type="submit"
+                [disabled]="!stepLoginForm.valid"
+              >
+                Login
+              </button>
+              <hr />
+              <button
+                class="btn btn-outline-primary cent"
+                (click)="toggle(false)"
+              >
+                New here? Chick here to Register
+              </button>
+              <div class="m-3 alert alert-danger" *ngIf="isError">
+                {{ errorMessage }}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div *ngIf="!isLogin">
+        <div class="card m-3 mt-4">
+          <form [formGroup]="stepRegForm" (ngSubmit)="requestRegisterStep()">
+            <div class="card-header">
+              <h5>STEP Register</h5>
+            </div>
+            <div class="card-body">
+              <div class="form-group my-2">
+                <label for="first_name">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="firstName"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="middle_name">Middle Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="middleName"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="last_name">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="lastName"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label style="margin-right: 10px" for="gender">Gender</label>
+                <input type="radio" formControlName="gender" value="MALE" />
+                <label style="margin-right: 15px; margin-left: 7px" for="male"
+                  >Male</label
+                >
+                <input type="radio" formControlName="gender" value="FEMALE" />
+                <label for="female" style="margin-right: 15px; margin-left: 7px"
+                  >Female</label
+                >
+              </div>
+
+              <div class="form-group my-2">
+                <label style="margin-right: 10px" for="disabled"
+                  >Disabled</label
+                >
+                <input type="radio" formControlName="disabled" value="YES" />
+                <label style="margin-right: 15px; margin-left: 7px" for="yes"
+                  >Yes</label
+                >
+                <input type="radio" formControlName="disabled" value="NO" />
+                <label style="margin-right: 15px; margin-left: 7px" for="no"
+                  >No</label
+                >
+              </div>
+
+              <div class="form-group my-2">
+                <label for="dob">Date Of Birth</label>
+                <input type="date" class="form-control" formControlName="dob" />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="contact">Contact Number</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="contactNo"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="contact">Aadhar Number</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="aadharNo"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="pan">Pan Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="panNo"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label style="margin-right: 10px" for="jobStatus"
+                  >Job Status</label
+                >
+                <input
+                  type="radio"
+                  formControlName="jobStatus"
+                  value="EMPLOYED"
+                />
+                <label
+                  style="margin-left: 10px; margin-right: 10px"
+                  for="employed"
+                  >Employed</label
+                >
+                <input
+                  type="radio"
+                  formControlName="jobStatus"
+                  value="UNEMPLOYED"
+                />
+                <label style="margin-left: 10px" for="unemployed"
+                  >Unemployed</label
+                >
+              </div>
+
+              <div class="form-group my-2">
+                <label for="jobTitle">Job Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="jobTitle"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="salary">Salary</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="salary"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label style="margin-right: 10px" for="residenceArea"
+                  >Type of Residence</label
+                >
+                <input
+                  type="radio"
+                  formControlName="residenceArea"
+                  value="RURAL"
+                />
+                <label style="margin-right: 10px; margin-left: 7px" for="rural"
+                  >Rural</label
+                >
+                <input
+                  type="radio"
+                  formControlName="residenceArea"
+                  value="URBAN"
+                />
+                <label style="margin-right: 10px; margin-left: 7px" for="urban"
+                  >Urban</label
+                >
+              </div>
+
+              <div class="form-group my-2">
+                <label
+                  style="margin-right: 10px; margin-left: 7px"
+                  for="maritalStatus"
+                  >Job Status</label
+                >
+                <input
+                  type="radio"
+                  formControlName="maritalStatus"
+                  value="UNMARRIED"
+                />
+                <label
+                  style="margin-right: 10px; margin-left: 7px"
+                  for="unmarried"
+                  >Unmarried</label
+                >
+                <input
+                  type="radio"
+                  formControlName="maritalStatus"
+                  value="MARRIED"
+                />
+                <label
+                  style="margin-right: 10px; margin-left: 7px"
+                  for="married"
+                  >Married</label
+                >
+                <input
+                  type="radio"
+                  formControlName="maritalStatus"
+                  value="WIDOWED"
+                />
+                <label
+                  style="margin-right: 10px; margin-left: 7px"
+                  for="widowed"
+                  >Widowed</label
+                >
+                <input
+                  type="radio"
+                  formControlName="maritalStatus"
+                  value="SEPERATED"
+                />
+                <label style="margin-left: 7px" for="separated"
+                  >Separated</label
+                >
+              </div>
+
+              <div class="form-group my-2">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+
+              <div class="form-group my-2">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="conPassword"
+                />
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <button
+                type="submit"
+                class="btn btn-outline-dark"
+                [disabled]="!stepRegForm.valid"
+              >
+                Register
+              </button>
+              <div class="m-3 alert alert-danger" *ngIf="isError">
+                {{ errorMessage }}
+              </div>
+              <div class="m-3 alert alert-success" *ngIf="!isError">
+                {{successMsg}}
+              </div>
+              <hr />
+              <button class="btn btn-outline-primary" (click)="toggle(true)">
+                Login Here
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="mt-4">
+        <h3 class="text-center">
+          Support to training and employment programme for women
+        </h3>
+        <p>
+          STEP Scheme aims to provide skills that give employability to women
+          and to provide competencies and skill that enable women to become
+          self-employed/entrepreneurs. The Scheme is intended to benefit women
+          who are in the age group of 16 years and above across the country.
+        </p>
+
+        <h4>Scheme Benefits & Highlights</h4>
+        <ul>
+          <li>The scheme has 2 fold objectives viz.</li>
+          <li>To provide skills that give employability to women.</li>
+          <li>
+            To provide competencies and skills that enable women to become
+            self-employed/entrepreneurs.
+          </li>
+        </ul>
+
+        <h4>Eligibility</h4>
+        <b>Scheme Target Group</b>
+        <p>
+          The scheme is intended to benefit women who are in the age group of 16
+          years and above.
+        </p>
+
+        <b>ELIGIBLE ORGANIZATIONS/ PROJECT IMPLEMENTING AGENCIES (PIAs)</b>
+        <p>
+          Grants-in-aid under the STEP programme may be given to an institution
+          having a distinct legal entity as under:
+        </p>
+        <ul>
+          <li>
+            Institutions or organizations set up as Autonomous Organization
+            under a specific statute or as a Society registered under the
+            Societies Registration Act, 1860 or Indian Trusts Act, 1882 (Not for
+            profit) or other statutes.
+          </li>
+          <li>
+            Voluntary Organizations or Non-Government Organizations registered
+            under the Societies Registration Act, Indian Trust Act carrying out
+            activities which promote the objectives of the STEP programme, with
+            adequate financial and other resources, credibility and experience
+            of the type of activities to be undertaken.
+          </li>
+          <li>Co-operative Societies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col order-first">
+        <div class="col-lg-6" *ngIf="!isLogin">
+        <div class="card">
+            <form [formGroup]="stepRegForm" 
+              (ngSubmit)="requestRegisterStep()">
+                <div class="card-header">
+                    <h5>STEP Register</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" formControlName="firstName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="middle_name">Middle Name</label>
+                        <input type="text" class="form-control" formControlName="middleName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="margin-right: 10px;" for="gender">Gender</label>
+                        <input type="radio"  formControlName="gender" value="male">
+                        <label style="margin-right: 10px;" for="male">Male</label>
+                        <input type="radio" formControlName="gender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="margin-right: 10px;" for="disabled">Disabled</label>
+                        <input type="radio" formControlName="disabled" value="yes">
+                        <label style="margin-right: 10px;" for="yes">Yes</label>
+                        <input type="radio" formControlName="disabled" value="no">
+                        <label for="no">No</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date Of Birth</label>
+                        <input type="date" class="form-control" formControlName="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" formControlName="email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="number" class="form-control" formControlName="contact">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Aadhar Number</label>
+                        <input type="number" class="form-control" formControlName="aadharNo">
+                    </div>
+                    <div class="form-group">
+                        <label for="pan">Pan Number</label>
+                        <input type="text" class="form-control" formControlName="panNo">
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right: 10px;" for="jobstatus">Job Status</label>
+                        <input type="radio" formControlName="jobstatus" value="employed">
+                        <label style="margin-left: 10px; margin-right: 10px;" for="employed">Employed</label>
+                        <input type="radio" formControlName="jobstatus" value="unemployed">
+                        <label style="margin-left: 10px;" for="unemployed">UnEmployed</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobtitle">Job Title</label>
+                        <input type="text" class="form-control" formControlName="jobtitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="number" class="form-control" formControlName="salary">
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right: 10px;" for="residence">Type of Residence</label>
+                        <input type="radio" formControlName="residence" value="rural">
+                        <label style="margin-right: 10px;" for="rural">Rural</label>
+                        <input type="radio" formControlName="residence" value="urban">
+                        <label for="urban">Urban</label>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right: 10px;" for="maritalstatus">Job Status</label>
+                        <input type="radio" formControlName="maritalstatus" value="unmarried">
+                        <label style="margin-right: 10px;" for="unmarried">Unmarried</label>
+                        <input type="radio" formControlName="maritalstatus" value="married">
+                        <label style="margin-right: 10px;" for="married">Married</label>
+                        <input type="radio" formControlName="maritalstatus" value="widowed">
+                        <label style="margin-right: 10px;" for="widowed">Widowed</label>
+                        <input type="radio" formControlName="maritalstatus" value="separated">
+                        <label for="separated">Separated</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" formControlName="stepPwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" formControlName="stepConPwd">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button
+                    type="submit"
+                    class="btn btn-outline-dark"
+                    [disabled]="!stepRegForm.valid"
+                    >
+                    Register
+                    </button>
+                    <div class="m-3 alert alert-danger" *ngIf="isError">
+                    {{ errorMessage }}
+                    </div>
+                    <div class="m-3 alert alert-danger" *ngIf="isError">
+                        <p>Registered Successfully</p>
+                    </div>
+                    <hr />
+                    <button class="btn btn-outline-primary" (click)="toggle(true)">
+                    Login Here
+                    </button>
+                </div>
+            </form>
+        </div>
+        </div> 
+    </div>    -->
+</div>
+
+<!-- <div class="container content">
+    <p>Step-login works!</p>
+    <button class="btn btn-primary" routerLink="/step/stepdashboard">Login</button>
+</div> -->
