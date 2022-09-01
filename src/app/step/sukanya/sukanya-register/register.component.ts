@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';  
-import { SukanyaRegister } from '../../../models/sukanya-register'; 
+import { Component, OnInit } from '@angular/core';   
 import { SukanyaService } from 'src/app/services/sukanya.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms'; 
 
 
 @Component({
@@ -9,15 +9,20 @@ import { SukanyaService } from 'src/app/services/sukanya.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  sukanyaReg:SukanyaRegister=new SukanyaRegister(); 
-  maxDate = new Date();
+ 
+  sukanyaRegForm: FormGroup; 
   minDate=new Date();
   errorMessage="";
   showMsg: Boolean=false; 
-  sukanyaDoc: any = File;
+  sukanyaDoc: any = File;  
   constructor(private sukanyaService:SukanyaService) { 
  
+    this.sukanyaRegForm = new FormGroup({
+      firstName : new FormControl('', Validators.required),
+      lastName : new FormControl('', Validators.required),
+      dob : new FormControl('', Validators.required),
+      aadharNo : new FormControl('', Validators.required),
+    });
   }
 
   ngOnInit(): void {
@@ -29,23 +34,28 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    if(this.sukanyaReg.firstName===undefined || this.sukanyaReg.firstName===""){
+ 
+    let registerData = this.sukanyaRegForm.getRawValue();
+     
+    if(registerData.firstName===undefined || registerData.firstName===""){
       this.errorMessage="Please Enter First Name";
       return ;
-    }if(this.sukanyaReg.lastName===undefined || this.sukanyaReg.lastName===""){
+    }if(registerData.lastName===undefined || registerData.lastName===""){
       this.errorMessage="Please Enter Last Name";
       return ;
     }
-    if(this.sukanyaReg.dob===undefined){
+    if(registerData.dob===undefined){
       this.errorMessage="Please Date of Birth";
       return ;
     }
-    if(this.sukanyaReg.aadharNo===undefined || this.sukanyaReg.aadharNo==="" ||this.sukanyaReg.aadharNo.length<12){
+    if(registerData.aadharNo===undefined || registerData.aadharNo==="" ||registerData.aadharNo.length<12){
       this.errorMessage="Please Enter Valid Aadhar Number";
       return ;
-    } 
+    }  
+    // console.log(registerData.dob.substring(0,4));
+    // console.log(this.minDate.getFullYear());
+    if(registerData.dob.substring(0,4)<this.minDate.getFullYear()){
 
-    if(this.sukanyaReg.dob.getFullYear!=this.minDate){
       this.errorMessage="Child should be below 10 years";
       return ;
     }
@@ -53,7 +63,9 @@ export class RegisterComponent implements OnInit {
     //   this.errorMessage="Please Uplaod Aadhar";
     //   return ;
     // }
-    this.sukanyaService.register(this.sukanyaReg).subscribe(_msg=>{this.showMsg=true;})
+    this.sukanyaService.register(registerData).subscribe(_msg=>{this.showMsg=true;})
+    this.sukanyaRegForm.reset();
+
   }
   
 }

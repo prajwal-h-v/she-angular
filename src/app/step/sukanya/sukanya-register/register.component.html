@@ -1,11 +1,14 @@
 <app-step-header></app-step-header>
 <app-step-navbar></app-step-navbar>
 <div class="container">
+
     <div class="text-center" *ngIf="errorMessage!==''|| errorMessage!==null || errorMessage!==undefined " style="color: red;">
+        <p class="alert alert-success" style="margin-top: 10px;">
             {{errorMessage}}
+        </p>
     </div>
     <div class="row justify-content-center" style="margin-top: 10px;">
-        <form class="col-lg-6" method="POST" (ngSubmit)="register()">
+        <form class="col-lg-6" [formGroup]="sukanyaRegForm" (ngSubmit)="register()">
             <div class="card">
                 <div class="card-header">
                     <h2 class="text-center">Registration Form</h2>
@@ -15,25 +18,25 @@
                     <!-- First Name -->
                     <div class="form-group">
                         <label for="firstname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" [(ngModel)]="sukanyaReg.firstName" id="firstname" name="firstname" placeholder="First Name">
+                        <input type="text" class="form-control" formControlName="firstName">
                     </div>
                     
                     <!-- Last Name-->
                     <div class="form-group">
                         <label for="lastname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" [(ngModel)]="sukanyaReg.lastName" id="lastname" name="lastname" placeholder="Last Name">
+                        <input type="text" class="form-control" formControlName="lastName">
                     </div>
                     
                     <!-- Date Of Birth -->
                     <div class="form-group">
                         <label for="dob" class="form-label">Date Of Birth</label><br>
-                        <input type="date" class="form-control" [min]="minDate" [max]="maxDate" [(ngModel)]="sukanyaReg.dob" id="dob" name="dob">
+                        <input type="date" class="form-control" formControlName="dob">
                     </div> 
 
                     <!-- Aadhar Number -->
                     <div class="form-group">
                         <label for="aadhar" class="form-label">Aadhar Number</label>
-                        <input type="number" class="form-control" maxlength="12" [(ngModel)]="sukanyaReg.aadharNo" id="aadhar" name="aadhar" pattern="[0-9]{12}" placeholder="Aadhar Number">
+                        <input type="number" class="form-control" maxlength="12" pattern="[0-9]{12}" formControlName="aadharNo">
                     </div>
                     
                     <!-- Aadhar Upload -->
@@ -55,6 +58,7 @@
                         </p>
                     </div>
                 </div>
+                
             </div>
         </form>
     </div>
